@@ -14,6 +14,7 @@ align_corrcoef = np.ndarray((N_sweep_distraction,N_samples,2))
 N_p = 10
 
 T = int(5e5)
+T_test = int(1e4)
 t_ax = np.arange(T)
 
 modes = ["comp","point"]
@@ -21,18 +22,9 @@ modes = ["comp","point"]
 for mode in tqdm(modes):
     for s in tqdm(range(N_sweep_distraction),leave=False):
         for i in tqdm(range(N_samples),leave=False):
-            a = np.random.rand(1,N_p)
-
-            a /= np.linalg.norm(a)
-
-            #####
-            # This just generates a random vector and subtracts the projection of the a vector,
-            # which makes vector a and vector a_orth orthogonal. a_orth is then normalized to unit length
-            # -> Gram Schmidt
-            a_orth = np.random.rand(1,N_p)
-            a_orth = a_orth - (a_orth @ a.T)*a/(a @ a.T)
-            a_orth /= np.linalg.norm(a_orth)
-            
+            #generate random orthonormal basis via qr-decomposition
+            Q,R = np.linalg.qr(np.random.normal(0.,1.,(N_p,N_p)))
+                        
             sequences = np.random.rand(T,N_p)
             
             w_p = np.ones((T,1,N_p))
@@ -42,10 +34,14 @@ for mode in tqdm(modes):
             b_d = np.zeros((T))
             b_p = np.zeros((T))
             
-            x_d = (a @ sequences.T).T
+            x_d = (Q[:,0] @ sequences.T).T
             
-            x_p = np.array(sequences)
-            x_p = x_p + ((x_p @ a_orth.T)*(distract_scaling[s] - 1.)) @ a_orth
+            #Transform x_p into orthogonal basis,
+            #Scale up distract_dimension[s] dimensions
+            #and transform back.
+            x_p = (Q.T @ sequences.T).T
+            x_p[:,1] *= distract_scaling[s]
+            x_p = (Q @ x_p.T).T
             
             I_p = np.ndarray((T))
             I_d = np.ndarray((T))
@@ -83,7 +79,8 @@ for mode in tqdm(modes):
             for t in tqdm(range(1,T),disable=False,leave=False):
                 
                 if(mode=="comp"):
-                    w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * y[t-1]*(y[t-1]-thetay)
+                    #w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * y[t-1]*(y[t-1]-thetay)
+                    w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * (y[t-1]-y_av[t-1])
                 else:
                     #w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * y[t-1]*(y[t-1]-y_squ_av[t-1])
                     w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * (y[t-1]-y_av[t-1])
@@ -113,10 +110,23 @@ for mode in tqdm(modes):
                 y_squ_av[t] = (1.-mu_av)*y_squ_av[t-1] + mu_av * y[t]**2.
                 y_av[t] = (1.-mu_av)*y_av[t-1] + mu_av * y[t]
             
-            align_corrcoef[s,i,modes.index(mode)] = np.corrcoef(a[0],w_p[-1,0])[1,0]
+            sequences_test = np.random.rand(T_test,N_p)
+            
+            x_d_test = (Q[:,0] @ sequences_test.T).T
+            
+            #Transform x_p into orthogonal basis,
+            #Scale up distract_dimension[s] dimensions
+            #and transform back.
+            x_p_test = (Q.T @ sequences_test.T).T
+            x_p_test[:,1] *= distract_scaling[s]
+            x_p_test = (Q @ x_p_test.T).T
+            
+            I_p_test = n_p[-1] * (w_p[-1] @ x_p_test.T) - b_p[-1]
+            I_d_test = n_d[-1] * x_d_test - b_d[-1]
+            
+            #align_corrcoef[s,i,modes.index(mode)] = np.corrcoef(a[0],w_p[-1,0])[1,0]
+            align_corrcoef[s,i,modes.index(mode)] = np.corrcoef(I_p_test,I_d_test)[1,0]
 
 np.savez(os.path.join(DATA_DIR,"distraction_scaling.npz"),
          align_corrcoef = align_corrcoef,
          distract_scaling = distract_scaling)
-         
-os.system("shutdown /s /t 1")

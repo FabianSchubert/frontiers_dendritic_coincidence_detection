@@ -1,5 +1,5 @@
 font.sans-serif: Fira Sans
-font.size: 10
+font.size: 8
 patch.linewidth: 0
 
 figure.autolayout: True

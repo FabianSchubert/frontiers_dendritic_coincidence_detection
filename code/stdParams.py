@@ -10,7 +10,7 @@ COLORS = plt.rcParams['axes.prop_cycle'].by_key()['color']
 DATA_DIR = os.path.join(os.path.dirname(__file__),"../data")
 PLOT_DIR = os.path.join(os.path.dirname(__file__),"../plots")
 
-FIG_WIDTH = 3.47
+FIG_WIDTH = 5.0
 
 thetap0 = 0.
 thetap1 = -1.
