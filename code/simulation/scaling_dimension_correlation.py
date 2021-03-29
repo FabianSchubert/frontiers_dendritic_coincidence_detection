@@ -23,6 +23,9 @@ t_ax = np.arange(T)
 
 modes = ["comp","point"]
 
+adapt_rule = "hebb"
+#adapt_rule = "fisher"
+
 for mode in tqdm(modes):
     for s in tqdm(range(N_sweep_distraction_scaling),leave=False):
         for n in tqdm(range(N_sweep_distraction_dimension),leave=False):
@@ -83,13 +86,12 @@ for mode in tqdm(modes):
 
                 for t in tqdm(range(1,T),disable=False,leave=False):
                     
-                    if(mode=="comp"):
-                        #w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * y[t-1]*(y[t-1]-thetay)
+                    if(adapt_rule=="hebb"):
                         w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * (y[t-1]-y_av[t-1])
-                    else:
-                        #w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * y[t-1]*(y[t-1]-y_squ_av[t-1])
-                        w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * (y[t-1]-y_av[t-1])
-                    
+                    elif(adpat_rule=="fisher"):
+                        pass
+                        #w_p[t] = w_p[t-1] + mu_w * 
+                        
                     w_p[t] /= np.linalg.norm(w_p[t])
                     
                     b_p[t] = b_p[t-1] + mu_b * (I_p[t-1] - I_pt)

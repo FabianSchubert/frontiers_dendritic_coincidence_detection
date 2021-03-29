@@ -60,7 +60,7 @@
 		the most straight-forward learning rule for the basal synaptic
 		weights would be derived from an appropriate loss function,
 		such as a mean square error, based on the difference between 
-		basal and apical input, i.e. $I_p - I_d$. Theoretical work has 
+		basal and apical input, i.e. $I_{\rm p} - I_{\rm d}$. Theoretical work has 
 		investigated possible learning mechanisms
 		that could utilize an intracellular error signal
 		\citep{Urbanczik_2014,Schiess_2016,Guerguiev_2017}.
@@ -98,21 +98,21 @@
 		input current injected arriving at the basal (proximal) and apical (distal) 
 		dendritic structure of a pyramidal neuron, respectively. The model is a slightly
 		simplified version of a phenomenological model proposed by \citet{Shai_2015}.
-		Denoting the input currents by $I_p$ (proximal) and $I_d$ (distal), 
+		Denoting the input currents by $I_{\rm p}$ (proximal) and $I_{\rm d}$ (distal), 
 		the model is written as
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{align}
 		\begin{split}
-		y\left(t\right) &= \sigma\left( I_p(t) - \theta_{p0} \right)
-		\left[1-\sigma\left(I_d(t) - \theta_d\right)\right] \\
-		&+ \alpha \sigma\left(I_d(t) - \theta_d \right)\sigma\left( I_p(t) - \theta_{p1} \right)
+		y\left(t\right) &= \sigma\left( I_{\rm p}(t) - \theta_{p0} \right)
+		\left[1-\sigma\left(I_{\rm d}(t) - \theta_d\right)\right] \\
+		&+ \alpha \sigma\left(I_{\rm d}(t) - \theta_d \right)\sigma\left( I_{\rm p}(t) - \theta_{p1} \right)
 		\end{split} \label{eq:comp_model}\\
 		\sigma(x) &\equiv \frac{1}{1+\exp(-4x)} \; .
 		\end{align}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		Here, $\theta_{p0}$, $\theta_{p1}$ and $\theta_d$ are threshold variables with
 		respect to proximal and distal input. Overall, this equation describes two distinct
-		regions of neural activation in the $(I_p, I_d)$-space which differ in their
+		regions of neural activation in the $(I_{\rm p}, I_{\rm d})$-space which differ in their
 		maximal firing rates, which are set to $1$ and $\alpha$, where $0 < \alpha < 1$.
 		A plot of \eqref{eq:comp_model} is shown in Fig.~\ref{fig:comp_model}.
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,7 +120,7 @@
 			\centering
 			\includegraphics[width=0.8\columnwidth]{plot_comp_mod_marks.png}
 			\caption{{\bf Two-compartment rate model.} Firing rate as a
-			function of proximal and distal input $I_p$ and $I_d$, 
+			function of proximal and distal input $I_{\rm p}$ and $I_{\rm d}$, 
 			see \eqref{eq:comp_model}. 
 			The thresholds $\theta_{p0}$, $\theta_{p1}$ and $\theta_d$ define
 			two regions of neural activity with a a maximal firing rate of $1$
@@ -133,15 +133,15 @@
 		simple point neuron model that was given by
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
-			y(t) = \sigma\left(I_p(t) + I_d(t) - \theta \right) \; .
+			y(t) = \sigma\left(I_{\rm p}(t) + I_{\rm d}(t) - \theta \right) \; .
 		\end{equation}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		In all our numerical experiments, the apical input $I_d$ was generated
+		In all our numerical experiments, the apical input $I_{\rm d}$ was generated
 		``as is", meaning, it was not dynamically calculated as a superposition
 		of multiple presynaptic inputs, but given by
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
-			I_d(t) = n_d(t) x_d(t) - b_d(t) \; ,
+			I_{\rm d}(t) = n_d(t) x_d(t) - b_d(t) \; ,
 			\label{eq:I_d}
 		\end{equation}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,15 +150,15 @@
 		are time dependent since they were subject to adaptation processes 
 		that are described in the next section.
 		
-		Similarly, $I_p(t)$ was given by
+		Similarly, $I_{\rm p}(t)$ was given by
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
-			I_p(t) = n_p(t) \sum_{i=1}^{N} x_{p,i}(t) w_i(t) - b_p(t) \; ,
+			I_{\rm p}(t) = n_p(t) \sum_{i=1}^{N} x_{p,i}(t) w_i(t) - b_p(t) \; ,
 		\end{equation}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		where $N$ is the number of presynaptic afferents, $x_{p,i}(t)$ the
 		corresponding sequences and $w_i(t)$ the synaptic efficacies.
-		As for $I_d(t)$, $n_p(t)$ and $b_p(t)$ was used as a time dependent
+		As for $I_{\rm d}(t)$, $n_p(t)$ and $b_p(t)$ was used as a time dependent
 		scaling and bias.
 		
 		\subsection{Plasticity}
@@ -204,18 +204,18 @@
 		according to the following homeostatic plasticity rules:
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{align}
-			b_p(t+1) &= b_p(t) + \mu_b \left[I_p(t) - I_p^t\right] \\
-			b_d(t+1) &= b_d(t) + \mu_b \left[I_d(t) - I_d^t\right] \\
-			n_p(t+1) &= n_p(t) + \mu_n \left[V_p^t - \left( I_p(t) - \tilde{I}_p(t)\right)^2\right] \\
-			n_d(t+1) &= n_d(t) + \mu_n \left[V_d^t - \left( I_d(t) - \tilde{I}_d(t)\right)^2\right] \\
-			\tilde{I}_p(t+1) &= (1-\mu_{av})\tilde{I}_p(t) + \mu_{av} I_p(t+1) \\
-			\tilde{I}_d(t+1) &= (1-\mu_{av})\tilde{I}_d(t) + \mu_{av} I_d(t+1)
+			b_p(t+1) &= b_p(t) + \mu_b \left[I_{\rm p}(t) - I_{\rm p}^t\right] \\
+			b_d(t+1) &= b_d(t) + \mu_b \left[I_{\rm d}(t) - I_{\rm d}^t\right] \\
+			n_p(t+1) &= n_p(t) + \mu_n \left[V_p^t - \left( I_{\rm p}(t) - \tilde{I}_p(t)\right)^2\right] \\
+			n_d(t+1) &= n_d(t) + \mu_n \left[V_d^t - \left( I_{\rm d}(t) - \tilde{I}_d(t)\right)^2\right] \\
+			\tilde{I}_p(t+1) &= (1-\mu_{av})\tilde{I}_p(t) + \mu_{av} I_{\rm p}(t+1) \\
+			\tilde{I}_d(t+1) &= (1-\mu_{av})\tilde{I}_d(t) + \mu_{av} I_{\rm d}(t+1)
 		\end{align}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		Here, $I_p^t$, $I_d^t$, $V_p^t$ and $V_p^t$ define targets for the 
-		temporal means and variances of $I_p$ and $I_d$. The dynamic variables 
+		Here, $I_{\rm p}^t$, $I_{\rm d}^t$, $V_p^t$ and $V_p^t$ define targets for the 
+		temporal means and variances of $I_{\rm p}$ and $I_{\rm d}$. The dynamic variables 
 		$\tilde{I}_p$ and $\tilde{I}_d$ are simply low-pass filtered running 
-		averages of $I_p$ and $I_d$.
+		averages of $I_{\rm p}$ and $I_{\rm d}$.
 		
 		A list of all parameter values is given in Table~\ref{tab:parameters}.
 		
@@ -226,8 +226,8 @@
 				$\theta_{p1}$ & $-1$ & $\mu_b$ & $10^{-3}$ \\ 
 				$\theta_{d}$ & $0$ & $\mu_n$ & $10^{-4}$ \\  
 				$\alpha$ & $0.3$ & $\mu_{av}$ & $5 \cdot 10^{-3}$ \\   
-				$\mu_w$ & $5 \cdot 10^{-5}$ & $I_p^t$ & $0$ \\
-				$V_p^t$ & $0.25$ & $I_d^t$ & $0$  
+				$\mu_w$ & $5 \cdot 10^{-5}$ & $I_{\rm p}^t$ & $0$ \\
+				$V_p^t$ & $0.25$ & $I_{\rm d}^t$ & $0$  
 			\end{tabular}
 		\caption{Model parameters}
 		\label{tab:parameters}
@@ -235,16 +235,106 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
 		\section{Results}
+		\label{sect:results}
+		
+		\subsection{Increased Alignment between Basal and Apical Inputs}
+		\label{sect:alignment}
+		
+		As a first test, we wanted to quantify the neuron's ability to 
+		align its basal input to the apical teaching signal.
+		To do so, we defined the pearson correlation coefficient
+		$\rho[I_{\rm p},I_{\rm d}]$ between the basal and apical input current
+		as our measure of interest. We determined this temporal
+		correlation coefficient after simulating all plasticity mechanisms
+		under stationary random input sequences with certain statistical
+		properties that shall be explained in the following.
+		As a starting point, we chose all $x_{p,i}(t)$ to be randomly
+		drawn from a uniform distribution, where $x_{p,i}(t) \in (0,1)$.
+		For $I_{\rm d}(t)$ to be fully `reconstructable' by the basal input, 
+		$x_d(t)$ had to be some linear combination of all $x_{p,i}(t)$.
+		Therefore, we chose $x_d(t) = \sum_{i=1}^N a_i x_{p,i}(t)$, where
+		$\mathbf{a}$ is a random vector with unit length.
+		Since we used a Hebbian learning scheme, we expected that 
+		the direction and magnitude of the principal components of 
+		the basal input would also significantly affect the outcome of
+		the experiment: A large variance in the basal input 
+		orthogonal to the `reconstruction vector' $\mathbf{a}$ 
+		should act as a distraction for the plasticity and reduce the
+		resulting alignment between $I_{\rm p}$ and $I_{\rm d}$. Therefore, we 
+		applied a transformation to the input sequences $x_{p,i}(t)$
+		that were parameterized by two quantities, a scaling factor $s$
+		and the dimension $N_{dist}$ of a subspace of the basal input space.
+		A set of $N_{dist}$ orthonormal basis vectors was randomly generated,
+		which were also orthogonal to $\mathbf{a}$. Withing this $N_{dist}$-dimensional
+		subspace, the input sequences $x_{p,i}(t)$ were then rescaled by the
+		factor $s$. 
+		
+		After both $x_{p,i}(t)$ and $x_d(t)$ were generated,
+		a simulation was run using all previously described plasticity
+		mechanisms until the dynamic variables reached a stationary state.
+		After this learning phase, another set of input sequences was generated
+		using the previously described protocol and $\rho[I_{\rm p},I_{\rm d}]$ was calculated.
+		Note that plasticity was turned off in this phase. This entire procedure
+		allowed us to calculate $\rho[I_{\rm p},I_{\rm d}]$ as a function of the distraction
+		parameters $s$ and $N_{dist}$. The results for both neuron models 
+		is shown in Fig.~\ref{fig:corr_dimension_scaling}. Here, the total number of 
+		basal inputs was $N=10$. One can observe a decorrelation transition for 
+		both models. However, the compartment model supports a significantly stronger
+		distraction in terms of the scaling factor $s$ as compared to the point model.
+		This was a first confirmation of our hypothesis that nonlinear interactions
+		between basal and apical input could improve learning guided by top-down signals.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{pd_corr_scaling}
+			\includegraphics[width=\columnwidth]{corr_dimension_scaling}
+			\caption{{\bf Alignment between Basal and Apical Input.} Color
+			encodes the Pearson correlation $\rho[I_p,I_d]$ for different
+			number of orthogonal distraction directions $N_{dist}$ 
+			and the corresponding scaling faction $s$.}
+			\label{fig:corr_dimension_scaling}
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
+		\subsection{Supervised Learning in a Linear Classification Task}
+		
+		Next, we investigated if the observed differences would also improve
+		the performance in an actual supervised learning task.
+		For this purpose, we constructed presynaptic basal input as illustrated
+		in Fig.~\ref{fig:illustration_classification}. Written in vector form,
+		each sample from the basal input was generated from the following expression:
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{equation}
+			\mathbf{x}_p(t) = \mathbf{b} + \mathbf{a}\left(c(t) + \sigma_a \zeta_a(t) \right) 
+			+ s \cdot \sum_{i=1}^{N_{dist}} \zeta_{dist,i}(t) \mathbf{v}_{dist,i} \; .
+		\end{equation}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		Here, $\mathbf{b}$ is a random vector drawn uniformly from
+		$(0,1)^N$, $\mathbf{a}$ is random unit vector as introduced in 
+		Section~\ref{sect:alignment}, $c(t)$ is a binary variable drawn 
+		from $\{-0.5,0.5\}$ with equal probability and $\zeta_a(t)$ and the
+		$\zeta_{dist,i}(t)$ are independent random Gaussian variables.
+		Finally, the set of $\mathbf{v}_{dist,i}$ forms a randomly generated
+		orthogonal basis of $N_{dist}$ unit vectors which---just as in 
+		Section~\ref{sect:alignment}---are also orthogonal to $\mathbf{a}$.
+		As indicated by the time dependence, the Gaussian and binary random
+		variables were drawn for each time step. The vectors
+		$\mathbf{b}$, $\mathbf{a}$, and $\mathbf{v}_{dist,i}$ were generated
+		once before the beginning of a simulation run.
+		
+		
+		
+	
+		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{distraction_classification_compare}
+			\centering
+			\includegraphics[width=0.75\columnwidth]{illustration_classification}
+			\caption{{\bf Input Space for a Simple Linear Classification Task.}
+			Two clusters of presynaptic basal activity were generated from 
+			multivariate Gaussian distributions. Here, $s$ denotes the standard
+			deviation orthogonal to the normal vector of the classification
+			hyperplane.}
+			\label{fig:illustration_classification}
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
