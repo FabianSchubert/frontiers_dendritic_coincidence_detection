@@ -296,11 +296,13 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
 		\subsection{Supervised Learning in a Linear Classification Task}
+		\label{sect:classification}
 		
 		Next, we investigated if the observed differences would also improve
 		the performance in an actual supervised learning task.
 		For this purpose, we constructed presynaptic basal input as illustrated
-		in Fig.~\ref{fig:illustration_classification}. Written in vector form,
+		in Fig.~\ref{fig:illustration_classification}.
+		Written in vector form,
 		each sample from the basal input was generated from the following expression:
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
@@ -312,34 +314,84 @@
 		$(0,1)^N$, $\mathbf{a}$ is random unit vector as introduced in 
 		Section~\ref{sect:alignment}, $c(t)$ is a binary variable drawn 
 		from $\{-0.5,0.5\}$ with equal probability and $\zeta_a(t)$ and the
-		$\zeta_{dist,i}(t)$ are independent random Gaussian variables.
+		$\zeta_{dist,i}(t)$ are independent random Gaussian variables with 
+		zero mean and unit variance. 
+		Hence, $\sigma_a$ simply denotes the standard deviation of each Gaussian
+		cluster along the direction of the normal vector $\mathbf{a}$ and was
+		set to $\sigma_a = 0.25$. 
 		Finally, the set of $\mathbf{v}_{dist,i}$ forms a randomly generated
 		orthogonal basis of $N_{dist}$ unit vectors which---just as in 
 		Section~\ref{sect:alignment}---are also orthogonal to $\mathbf{a}$.
+		The free parameter $s$ parameterized
+		the standard deviation along this subspace orthogonal to $\mathbf{a}$.
 		As indicated by the time dependence, the Gaussian and binary random
 		variables were drawn for each time step. The vectors
 		$\mathbf{b}$, $\mathbf{a}$, and $\mathbf{v}_{dist,i}$ were generated
 		once before the beginning of a simulation run.
-		
-		
-		
-	
-		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
 			\centering
 			\includegraphics[width=0.75\columnwidth]{illustration_classification}
 			\caption{{\bf Input Space for a Simple Linear Classification Task.}
-			Two clusters of presynaptic basal activity were generated from 
-			multivariate Gaussian distributions. Here, $s$ denotes the standard
-			deviation orthogonal to the normal vector of the classification
-			hyperplane.}
+				Two clusters of presynaptic basal activity were generated from 
+				multivariate Gaussian distributions. Here, $s$ denotes the standard
+				deviation orthogonal to the normal vector of the classification
+				hyperplane.}
 			\label{fig:illustration_classification}
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
+		For the classification task, we created two output neurons receiving
+		the same basal presynaptic input, while the top-down input encoded
+		the correct linear classification in a one-hot scheme, that is
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{align}
+			x_{d,0}(t) &= 1 - \Theta\left( \left(\mathbf{x}_p(t) - \mathbf{b}\right)^T \mathbf{a}\right) \\
+			x_{d,1}(t) &= \Theta\left( \left(\mathbf{x}_p(t) - \mathbf{b}\right)^T \mathbf{a}\right) \; ,
+		\end{align}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		where $\Theta(x)$ is the Heaviside step function.
 		
+		As in the previous experiment, we ran a full simulation until 
+		all dynamic variables reached a stationary state. After this,
+		a test run without plasticity and with the apical input turned off 
+		was used to evaluate the classification	performance. For each sample,
+		the index of the neuron with the highest activity was used
+		as the predicted class. Accuracy was then calculated as the fraction
+		of correctly classified samples.
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}
+			\includegraphics[width=\columnwidth]{classification_dimension_scaling}
+			\caption{{\bf Binary Classification Accuracy.}
+			Fraction of correctly classified patterns as illustrated in
+			Fig.~\ref{fig:illustration_classification}, see 
+			Section~\ref{sect:classification}.¸}
+		\label{fig:classification_accuracy}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
+		The resulting accuracy as a function of $N_{dist}$ and $s$
+		is shown in Fig.~\ref{fig:classification_accuracy}.
+		Albeit differences were small, the compartment model did
+		show a better overall accuracy for the tested parameter range.
+		
+		\subsection{Non-Hebbian Learning Rules}
+		\label{sect:non-hebbian}
+		
+		To be continued, see Fig.~\ref{fig:classification_accuracy_bcm}.
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}
+			\includegraphics[width=\columnwidth]{classification_dimension_scaling_bcm}
+			\caption{{\bf Binary Classification Accuracy, BCM Rule.}
+				Fraction of correctly classified patterns as illustrated in
+				Fig.~\ref{fig:illustration_classification}, after training with
+				a BCM-like learning rule.¸}
+			\label{fig:classification_accuracy_bcm}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		\section{Discussion}
 		
 		
 		
