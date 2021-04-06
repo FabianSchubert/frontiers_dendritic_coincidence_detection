@@ -75,19 +75,17 @@
 		to learn to reproduce an apical teaching signal in its
 		proximal input.
 		
-		In our work, we combined a phenomenological model predicting the output
+		In our work, we combined a phenomenological model that generates the output
 		firing rate as a function of two streams of synaptic input (subsuming basal and apical input)
-		with a BCM-like plasticity rule on basal synapses. LTP was induced in our model 
-		if the postsynaptic activity surpassed a threshold level that was only achievable if 
-		both basal and apical inputs were present. Therefore, we hypothesized that 
+		with Hebbian as well as BCM-like plasticity rules on basal synapses. We hypothesized that 
 		this combination of neural activation and plasticity rules would lead to an
 		increased correlation between basal and apical input.
 		
 		Furthermore, this temporal alignment could potentially facilitate apical inputs to act
 		as top-down teaching signals, without the need for an explicit error-driven
 		learning rule. Thus, we also tested our model in a simple linear 
-		supervised classification task and compared it to the performance of simple
-		point neuron combined with a BCM-plasticity rule on the basal inputs.
+		supervised classification task and compared it to the performance of a simple
+		point neuron equipped with similar plasticity rules.
 		
 		\section{Model}
 		
@@ -163,42 +161,44 @@
 		
 		\subsection{Plasticity}
 		
-		We implemented a BCM-like plasticity rule for the basal 
+		We implemented a Hebbian plasticity rule for the basal 
 		synaptic weights given by the following update equation:
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{align}
 			w_i(t+1) &= w_i(t) + \mu_w \left(x_{p,i}(t) - \tilde{x}_{p,i}(t)\right)
-			y(t)\left[y(t) - \theta_y \right]
+			\left(y(t) - \tilde{y} \right)
 			\label{eq:bcm_plast} \\
-			\tilde{x}_{p,i}(t+1) &= (1-\mu_{av})\tilde{x}_{p,i}(t) + \mu_{av}x_{p,i}(t+1)
+			\tilde{x}_{p,i}(t+1) &= (1-\mu_{av})\tilde{x}_{p,i}(t) + \mu_{av}x_{p,i}(t+1) \\
+			\tilde{y}(t+1) &= (1-\mu_{av})\tilde{y}(t) + \mu_{av}y(t+1)
 		\end{align}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		While the classical BCM-rule dynamically modifies the 
-		threshold $\theta_y$ to stabilize weights, we used a
+		Additionally, we used a
 		synaptic normalization constraint
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
 			w_i(t) \rightarrow \frac{w_i(t)}{\lVert \mathbf{w}(t)\rVert}
+			\label{eq:weight_norm}
 		\end{equation}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		in each time step, where $\lVert \mathbf{w}(t)\rVert$ denotes the Euclidean
-		norm of the synaptic weight vector. The threshold $\theta_y$ was
-		chosen such that LTP is present if neural activity is in the
-		high-activity regime (yellow area in Fig.~\ref{fig:comp_model}), while
-		LTD is present in the low-activity regime 
-		(given by $\alpha$, see Fig.~\ref{fig:comp_model}). Hence, we set
-		$\theta_y = (1+\alpha)/2$.
+		norm of the synaptic weight vector. 
+%		The threshold $\theta_y$ was
+%		chosen such that LTP is present if neural activity is in the
+%		high-activity regime (yellow area in Fig.~\ref{fig:comp_model}), while
+%		LTD is present in the low-activity regime 
+%		(given by $\alpha$, see Fig.~\ref{fig:comp_model}). Hence, we set
+%		$\theta_y = (1+\alpha)/2$.
 		
 		For comparative reasons, the point neuron model was equipped with the
-		same plasticity rule for the proximal weights as \eqref{eq:bcm_plast}, 
-		except that the threshold $\theta_y$ was dynamically adjusted as
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\begin{equation}
-			\theta_y(t+1) = \left(1-\mu_{av}\right)\theta_y(t) + \mu_{av} y^2(t) \; , 
-		\end{equation}
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		which is an implementation of a running average of the square activity,
-		as used in the classic BCM-rule.
+		same plasticity rule for the proximal weights as \eqref{eq:bcm_plast}. 
+%		except that the threshold $\theta_y$ was dynamically adjusted as
+%		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		\begin{equation}
+%			\theta_y(t+1) = \left(1-\mu_{av}\right)\theta_y(t) + \mu_{av} y^2(t) \; , 
+%		\end{equation}
+%		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		which is an implementation of a running average of the square activity,
+%		as used in the classic BCM-rule.
 		
 		Additionally, the scaling and bias variables were changing dynamically
 		according to the following homeostatic plasticity rules:
@@ -378,7 +378,46 @@
 		\subsection{Non-Hebbian Learning Rules}
 		\label{sect:non-hebbian}
 		
-		To be continued, see Fig.~\ref{fig:classification_accuracy_bcm}.
+		Instead of Hebbian learning, we also considered a BCM-like
+		learning rule for the basal weights \citep{Bienenstock1982,Intrator1992}.
+		The form of the BCM-rule we consider here reads
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{equation}
+		\Delta w_i \propto y\left(y - \theta_M\right) x_i - \epsilon w_i \; ,
+		\end{equation}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		where $\theta_M$ is a threshold defining a transition from LTP to LTD and
+		$\epsilon$ is an optional decay term on the weights.
+		In the variant introduced by \citet{Law1994}, the sliding threshold is simply
+		the temporal average of the squared neural activity, 
+		$\theta_M = \langle y^2 \rangle$. In practice, this would be calculated
+		as a running average, thereby preventing the weights from growing 
+		indefinitely.
+		
+		However, for our compartment model, we chose to explicitly set the
+		threshold to be the mean value between the high- and low-activity regime
+		in our compartment model, i.e.\ $\theta_M = (1+\alpha)/2$. By doing so, LTP was
+		preferably induced if both basal and apical input was present at the same
+		time. Furthermore, instead of the weight decay term, we chose to keep
+		the weight normalization as introduced in \eqref{eq:weight_norm}.
+		Obviously, for the point model, the reasoning behind our choice of
+		$\theta_M$ did not apply. Still, to provide some level of comparability,
+		we also ran simulations with a point model where the sliding threshold was
+		calculated as a running average of $y^2$. Furthermore, we did not use
+		weight normalization in this case, but chose to use a small weight decay term
+		with $\epsilon = 0.1$. The results are shown in 
+		Fig.~\ref{fig:classification_accuracy_bcm} (classification task) and 
+		Fig.~\ref{fig:classification_accuracy_bcm} (Basal-Apical alignment). 
+		While the accuracy of the classification for the point model
+		was at most comparable to Hebbian learning, the BCM-like rule for the 
+		compartment model significantly increased the accuracy for the tested
+		parameter range (compare Fig.~\ref{fig:classification_accuracy}).
+		
+		Likewise, the compartment model also significantly benefited from
+		the BCM rule in terms of basal-apical alignment, while only marginal
+		improvements could be observed for the point model
+		(compare Fig.~\ref{fig:corr_dimension_scaling_bcm} 
+		with Fig.~\ref{fig:corr_dimension_scaling}).
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
@@ -391,9 +430,21 @@
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}
+			\includegraphics[width=\columnwidth]{corr_dimension_scaling_bcm}
+			\caption{{\bf Alignment between Basal and Apical Input, BCM Rule.}
+				Color encodes the Pearson correlation $\rho[I_p,I_d]$ for different
+				number of orthogonal distraction directions $N_{dist}$ 
+				and the corresponding scaling faction $s$ after training
+				with a BCM-like rule. Compare to Fig.~\ref{fig:corr_dimension_scaling}.}
+			\label{fig:corr_dimension_scaling_bcm}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
 		\section{Discussion}
 		
-		
+		To be continued
 		
 		
 		\bibliography{Dendritic_Learning}

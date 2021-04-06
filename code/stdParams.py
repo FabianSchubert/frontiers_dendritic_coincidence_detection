@@ -18,6 +18,7 @@ thetad = 0.
 alpha = 0.3
 thetay = (1.+alpha)/2.
 mu_w = 5e-4
+eps_dec = 0.1
 mu_b = 1e-3
 mu_n = 1e-4
 mu_av = 5e-3

@@ -1,9 +1,28 @@
 \begin{thebibliography}{}
 
+\bibitem[Bienenstock et~al., 1982]{Bienenstock1982}
+Bienenstock, E.~L., Cooper, L.~N., and Munro, P.~W. (1982).
+\newblock {Theory for the development of neuron selectivity: Orientation
+  specificity and binocular interaction in visual cortex}.
+\newblock {\em Journal of Neuroscience}, 2(1):32--48.
+
 \bibitem[Guerguiev et~al., 2017]{Guerguiev_2017}
 Guerguiev, J., Lillicrap, T.~P., and Richards, B.~A. (2017).
 \newblock {Towards deep learning with segregated dendrites}.
 \newblock {\em eLife}, 6.
+
+\bibitem[Intrator and Cooper, 1992]{Intrator1992}
+Intrator, N. and Cooper, L.~N. (1992).
+\newblock {Objective function formulation of the BCM theory of visual cortical
+  plasticity: Statistical connections, stability conditions}.
+\newblock {\em Neural Networks}, 5(1):3--17.
+
+\bibitem[Law and Cooper, 1994]{Law1994}
+Law, C.~C. and Cooper, L.~N. (1994).
+\newblock {Formation of receptive fields in realistic visual environments
+  according to the Bienenstock, Cooper, and Munro (BCM) theory}.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 91(16):7797--7801.
 
 \bibitem[Schiess et~al., 2016]{Schiess_2016}
 Schiess, M., Urbanczik, R., and Senn, W. (2016).
