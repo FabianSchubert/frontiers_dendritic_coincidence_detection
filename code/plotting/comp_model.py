@@ -9,16 +9,15 @@ sns.set()
 from stdParams import *
 plt.style.use('mpl_style.mplstyle')
 import os
+from src.neuronmodel import *
 
+'''
 def s(x):
     return 1./(1.+np.exp(-4.*g*x))
     
 def phi(x,y):
     return alpha * s(x)*(1.-s(y)) + s(x-thp)*s(y)
-
-alpha = 0.3
-thp = -1.
-g=1.
+'''
 
 p = np.linspace(-2.,2.,100)
 d = np.linspace(-2.,2.,100)
@@ -33,7 +32,7 @@ P,D = np.meshgrid(p,d)
 
 fig, ax = plt.subplots(1,1,figsize=(5,4))
 
-pm = ax.pcolormesh(p_ax,d_ax,phi(P,D),rasterized=True)
+pm = ax.pcolormesh(p_ax,d_ax,psi(P,D),rasterized=True)
 
 divider = make_axes_locatable(ax)
 cax = divider.append_axes("right", size="5%", pad="13%")
@@ -55,5 +54,7 @@ ax.text(2.15,-0.1,r'$\theta_{d}$',fontsize=14)
 
 fig.tight_layout(pad=0.1)
 
-fig.savefig("../../../notes/figures/plot_comp_mod_marks.pdf",transparent=True)
-fig.savefig("../../../notes/figures/plot_comp_mod_marks.png",dpi=600,transparent=True)
+fig.savefig(os.path.join(PLOT_DIR,"plot_comp_mod_marks.pdf"),transparent=True)
+fig.savefig(os.path.join(PLOT_DIR,"plot_comp_mod_marks.png"),dpi=600,transparent=True)
+
+plt.show()

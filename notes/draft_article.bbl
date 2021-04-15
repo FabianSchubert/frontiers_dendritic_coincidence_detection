@@ -1,44 +1,197 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{21}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Bienenstock et~al., 1982]{Bienenstock1982}
-Bienenstock, E.~L., Cooper, L.~N., and Munro, P.~W. (1982).
+\bibitem[Bienenstock et~al.(1982)Bienenstock, Cooper, and
+  Munro]{Bienenstock1982}
+E.~L. Bienenstock, L.~N. Cooper, and P.~W. Munro.
 \newblock {Theory for the development of neuron selectivity: Orientation
   specificity and binocular interaction in visual cortex}.
-\newblock {\em Journal of Neuroscience}, 2(1):32--48.
+\newblock \emph{Journal of Neuroscience}, 2\penalty0 (1):\penalty0 32--48, jan
+  1982.
+\newblock ISSN 02706474.
+\newblock \doi{10.1523/jneurosci.02-01-00032.1982}.
+\newblock URL \url{https://www.jneurosci.org/content/2/1/32
+  https://www.jneurosci.org/content/2/1/32.abstract}.
 
-\bibitem[Guerguiev et~al., 2017]{Guerguiev_2017}
-Guerguiev, J., Lillicrap, T.~P., and Richards, B.~A. (2017).
+\bibitem[Branco and H{\"{a}}usser(2011)]{Branco2011}
+T.~Branco and M.~H{\"{a}}usser.
+\newblock {Synaptic Integration Gradients in Single Cortical Pyramidal Cell
+  Dendrites}.
+\newblock \emph{Neuron}, 69\penalty0 (5):\penalty0 885--892, mar 2011.
+\newblock ISSN 08966273.
+\newblock \doi{10.1016/j.neuron.2011.02.006}.
+\newblock URL \url{http://www.cell.com/article/S0896627311001036/fulltext
+  http://www.cell.com/article/S0896627311001036/abstract
+  https://www.cell.com/neuron/abstract/S0896-6273(11)00103-6}.
+
+\bibitem[Ebner et~al.(2019)Ebner, Clopath, Jedlicka, and Cuntz]{Ebner2019}
+C.~Ebner, C.~Clopath, P.~Jedlicka, and H.~Cuntz.
+\newblock {Unifying Long-Term Plasticity Rules for Excitatory Synapses by
+  Modeling Dendrites of Cortical Pyramidal Neurons}.
+\newblock \emph{Cell Reports}, 29\penalty0 (13):\penalty0 4295--4307.e6, dec
+  2019.
+\newblock ISSN 22111247.
+\newblock \doi{10.1016/j.celrep.2019.11.068}.
+
+\bibitem[Guerguiev et~al.(2017)Guerguiev, Lillicrap, and
+  Richards]{Guerguiev_2017}
+J.~Guerguiev, T.~P. Lillicrap, and B.~A. Richards.
 \newblock {Towards deep learning with segregated dendrites}.
-\newblock {\em eLife}, 6.
+\newblock \emph{eLife}, 6, dec 2017.
+\newblock ISSN 2050084X.
+\newblock \doi{10.7554/eLife.22901}.
 
-\bibitem[Intrator and Cooper, 1992]{Intrator1992}
-Intrator, N. and Cooper, L.~N. (1992).
+\bibitem[H{\"{a}}usser et~al.(2000)H{\"{a}}usser, Spruston, and
+  Stuart]{Hausser2000}
+M.~H{\"{a}}usser, N.~Spruston, and G.~J. Stuart.
+\newblock {Diversity and dynamics of dendritic signaling}, oct 2000.
+\newblock ISSN 00368075.
+\newblock URL \url{http://science.sciencemag.org/}.
+
+\bibitem[Hay et~al.(2011)Hay, Hill, Sch{\"{u}}rmann, Markram, and
+  Segev]{Hay2011}
+E.~Hay, S.~Hill, F.~Sch{\"{u}}rmann, H.~Markram, and I.~Segev.
+\newblock {Models of Neocortical Layer 5b Pyramidal Cells Capturing a Wide
+  Range of Dendritic and Perisomatic Active Properties}.
+\newblock \emph{PLoS Computational Biology}, 7\penalty0 (7):\penalty0 e1002107,
+  jul 2011.
+\newblock ISSN 1553-7358.
+\newblock \doi{10.1371/journal.pcbi.1002107}.
+\newblock URL \url{https://dx.plos.org/10.1371/journal.pcbi.1002107}.
+
+\bibitem[Intrator and Cooper(1992)]{Intrator1992}
+N.~Intrator and L.~N. Cooper.
 \newblock {Objective function formulation of the BCM theory of visual cortical
   plasticity: Statistical connections, stability conditions}.
-\newblock {\em Neural Networks}, 5(1):3--17.
+\newblock \emph{Neural Networks}, 5\penalty0 (1):\penalty0 3--17, jan 1992.
+\newblock ISSN 08936080.
+\newblock \doi{10.1016/S0893-6080(05)80003-6}.
 
-\bibitem[Law and Cooper, 1994]{Law1994}
-Law, C.~C. and Cooper, L.~N. (1994).
+\bibitem[Larkum(2013)]{Larkum2013}
+M.~Larkum.
+\newblock {A cellular mechanism for cortical associations: An organizing
+  principle for the cerebral cortex}, mar 2013.
+\newblock ISSN 01662236.
+\newblock URL \url{http://www.cell.com/article/S0166223612002032/fulltext
+  http://www.cell.com/article/S0166223612002032/abstract
+  https://www.cell.com/trends/neurosciences/abstract/S0166-2236(12)00203-2}.
+
+\bibitem[Larkum et~al.(2009)Larkum, Nevian, Sandier, Polsky, and
+  Schiller]{Larkum2009}
+M.~E. Larkum, T.~Nevian, M.~Sandier, A.~Polsky, and J.~Schiller.
+\newblock {Synaptic integration in tuft dendrites of layer 5 pyramidal neurons:
+  A new unifying principle}.
+\newblock \emph{Science}, 325\penalty0 (5941):\penalty0 756--760, aug 2009.
+\newblock ISSN 00368075.
+\newblock \doi{10.1126/science.1171958}.
+\newblock URL \url{https://science.sciencemag.org/content/325/5941/756
+  https://science.sciencemag.org/content/325/5941/756.abstract}.
+
+\bibitem[Law and Cooper(1994)]{Law1994}
+C.~C. Law and L.~N. Cooper.
 \newblock {Formation of receptive fields in realistic visual environments
   according to the Bienenstock, Cooper, and Munro (BCM) theory}.
-\newblock {\em Proceedings of the National Academy of Sciences of the United
-  States of America}, 91(16):7797--7801.
+\newblock \emph{Proceedings of the National Academy of Sciences of the United
+  States of America}, 91\penalty0 (16):\penalty0 7797--7801, aug 1994.
+\newblock ISSN 00278424.
+\newblock \doi{10.1073/pnas.91.16.7797}.
+\newblock URL \url{/pmc/articles/PMC44489/?report=abstract
+  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC44489/}.
 
-\bibitem[Schiess et~al., 2016]{Schiess_2016}
-Schiess, M., Urbanczik, R., and Senn, W. (2016).
+\bibitem[Letzkus et~al.(2006)Letzkus, Kampa, and Stuart]{Letzkus2006}
+J.~J. Letzkus, B.~M. Kampa, and G.~J. Stuart.
+\newblock {Learning Rules for Spike Timing-Dependent Plasticity Depend on
+  Dendritic Synapse Location}.
+\newblock \emph{Journal of Neuroscience}, 26\penalty0 (41):\penalty0
+  10420--10429, 2006.
+\newblock ISSN 0270-6474.
+\newblock \doi{10.1523/JNEUROSCI.2650-06.2006}.
+\newblock URL \url{http://www.jneurosci.org/content/26/41/10420}.
+
+\bibitem[Poirazi(2009)]{Poirazi2009}
+P.~Poirazi.
+\newblock {Information processing in single cells and small networks: Insights
+  from compartmental models}.
+\newblock In \emph{AIP Conference Proceedings}, volume 1108, pages 158--167.
+  American Institute of Physics, 2009.
+\newblock \doi{10.1063/1.3117124}.
+
+\bibitem[Ramaswamy and Markram(2015)]{Ramaswamy2015}
+S.~Ramaswamy and H.~Markram.
+\newblock {Anatomy and physiology of the thick-tufted layer 5 pyramidal
+  neuron}, jun 2015.
+\newblock ISSN 16625102.
+\newblock URL \url{www.frontiersin.org}.
+
+\bibitem[Schiess et~al.(2016)Schiess, Urbanczik, and Senn]{Schiess_2016}
+M.~Schiess, R.~Urbanczik, and W.~Senn.
 \newblock {Somato-dendritic Synaptic Plasticity and Error-backpropagation in
   Active Dendrites}.
-\newblock {\em PLoS Computational Biology}, 12(2):1004638.
+\newblock \emph{PLoS Computational Biology}, 12\penalty0 (2):\penalty0 1004638,
+  feb 2016.
+\newblock ISSN 15537358.
+\newblock \doi{10.1371/journal.pcbi.1004638}.
+\newblock URL
+  \url{https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004638}.
 
-\bibitem[Shai et~al., 2015]{Shai_2015}
-Shai, A.~S., Anastassiou, C.~A., Larkum, M.~E., and Koch, C. (2015).
+\bibitem[Shai et~al.(2015{\natexlab{a}})Shai, Anastassiou, Larkum, and
+  Koch]{Shai2015}
+A.~S. Shai, C.~A. Anastassiou, M.~E. Larkum, and C.~Koch.
 \newblock {Physiology of Layer 5 Pyramidal Neurons in Mouse Primary Visual
   Cortex: Coincidence Detection through Bursting}.
-\newblock {\em PLOS Computational Biology}, 11(3).
+\newblock \emph{PLOS Computational Biology}, 11\penalty0 (3),
+  2015{\natexlab{a}}.
 
-\bibitem[Urbanczik and Senn, 2014]{Urbanczik_2014}
-Urbanczik, R. and Senn, W. (2014).
+\bibitem[Shai et~al.(2015{\natexlab{b}})Shai, Anastassiou, Larkum, and
+  Koch]{Shai_2015}
+A.~S. Shai, C.~A. Anastassiou, M.~E. Larkum, and C.~Koch.
+\newblock {Physiology of Layer 5 Pyramidal Neurons in Mouse Primary Visual
+  Cortex: Coincidence Detection through Bursting}.
+\newblock \emph{PLOS Computational Biology}, 11\penalty0 (3),
+  2015{\natexlab{b}}.
+
+\bibitem[Sj{\"{o}}str{\"{o}}m and H{\"{a}}usser(2006)]{Sjoestroem2006}
+P.~J. Sj{\"{o}}str{\"{o}}m and M.~H{\"{a}}usser.
+\newblock {A Cooperative Switch Determines the Sign of Synaptic Plasticity in
+  Distal Dendrites of Neocortical Pyramidal Neurons}.
+\newblock \emph{Neuron}, 51\penalty0 (2):\penalty0 227--238, jul 2006.
+\newblock \doi{10.1016/j.neuron.2006.06.017}.
+
+\bibitem[Spruston(2008)]{Spruston2008}
+N.~Spruston.
+\newblock {Pyramidal neurons: dendritic structure and synaptic integration}.
+\newblock \emph{Nature Reviews Neuroscience}, 9\penalty0 (3):\penalty0
+  206--221, mar 2008.
+\newblock \doi{10.1038/nrn2286}.
+
+\bibitem[Spruston et~al.(1995)Spruston, Schiller, Stuart, and
+  Sakmann]{Spruston1995}
+N.~Spruston, Y.~Schiller, G.~Stuart, and B.~Sakmann.
+\newblock {Activity-dependent action potential invasion and calcium influx into
+  hippocampal CA1 dendrites}.
+\newblock \emph{Science}, 268\penalty0 (5208):\penalty0 297--300, apr 1995.
+\newblock ISSN 00368075.
+\newblock \doi{10.1126/science.7716524}.
+\newblock URL \url{http://science.sciencemag.org/}.
+
+\bibitem[Stuart and H{\"{a}}usser(2001)]{Stuart2001}
+G.~J. Stuart and M.~H{\"{a}}usser.
+\newblock {Dendritic coincidence detection of EPSPs and action potentials}.
+\newblock \emph{Nature Neuroscience}, 4\penalty0 (1):\penalty0 63--71, 2001.
+\newblock ISSN 10976256.
+\newblock \doi{10.1038/82910}.
+\newblock URL \url{https://pubmed.ncbi.nlm.nih.gov/11135646/}.
+
+\bibitem[Urbanczik and Senn(2014)]{Urbanczik_2014}
+R.~Urbanczik and W.~Senn.
 \newblock {Learning by the Dendritic Prediction of Somatic Spiking}.
-\newblock {\em Neuron}, 81(3):521--528.
+\newblock \emph{Neuron}, 81\penalty0 (3):\penalty0 521--528, feb 2014.
+\newblock ISSN 08966273.
+\newblock \doi{10.1016/j.neuron.2013.11.030}.
+\newblock URL \url{http://dx.}
 
 \end{thebibliography}

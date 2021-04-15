@@ -13,12 +13,13 @@
 \author{Fabian Schubert}
 \title{Nonlinear Dendritic Coincidence Detection for Supervised Learning}
 
-\usepackage{natbib}
-\bibliographystyle{apalike}
+\usepackage[numbers]{natbib}
+\bibliographystyle{abbrvnat}
 
 \renewcommand{\arraystretch}{1.5}
 
 \usepackage{layouts}
+
 
 \begin{document}
 	\maketitle
@@ -27,21 +28,26 @@
 		
 		In recent years, a growing body of research has addressed the 
 		functional implications of the distinct physiology and anatomy of 
-		cortical pyramidal neurons. In particular, on the theoretical side,
+		cortical pyramidal neurons \cite{Spruston2008,Hay2011,Ramaswamy2015}. 
+		In particular, on the theoretical side,
 		we saw a paradigm shift from treating neurons as point-like electrical
-		structures towards embracing the entire dendritic structure. This was 
+		structures towards embracing the entire dendritic structure 
+		\cite{Larkum2009,Poirazi2009,Shai2015}. This was 
 		mostly due to the fact that experimental work uncovered dynamical properties
-		of these cells that simply could not be accounted for by point models.
+		of these cells that simply could not be accounted for by point models
+		\cite{Spruston1995,Hausser2000}.
 		
 		An important finding was that the apical dendritic tree of
 		cortical pyramidal neurons can act as a separate nonlinear synaptic 
-		integration zone. Under certain conditions, a dendritic $\rm Ca^{2+}$ spike
+		integration zone \cite{Spruston2008,Branco2011}. 
+		Under certain conditions, a dendritic $\rm Ca^{2+}$ spike
 		can be elicited that propagates towards the soma, causing rapid, bursting
 		spiking activity. One of the cases in which dendritic spiking can occur
-		was termed 'backpropagation-activated $\rm Ca^{2+}$ spike firing' 
-		('BAC firing'): A single somatic spike can backpropagate towards the apical
+		was termed `backpropagation-activated $\rm Ca^{2+}$ spike firing' 
+		(`BAC firing'): A single somatic spike can backpropagate towards the apical
 		spike initiation zone, in turn significantly facilitating the initiation of 
-		a dendritic spike. This reciprocal coupling is believed to act as a form of
+		a dendritic spike \cite{Stuart2001,Spruston2008,Larkum2013}. 
+		This reciprocal coupling is believed to act as a form of
 		coincidence detection: If apical and basal synaptic input co-occurs, the 
 		neuron can respond with a rapid burst of spiking activity. The firing rate
 		of these temporal bursts exceeds the firing rate that is maximally achievable 
@@ -49,10 +55,12 @@
 		detection between apical and basal input.
 		
 		Naturally, these mechanisms also affect plasticity and thus learning
-		within the cortex. While the interplay between basal and apical stimulation and
+		within the cortex \cite{Sjoestroem2006,Ebner2019}. 
+		While the interplay between basal and apical stimulation and
 		its effect on synaptic efficacies is subject to ongoing research, there is
 		some evidence that BAC-firing tends to shift plasticity towards long-term potentiation
-		(LTP). Thus, coincidence between basal and apical input appears to also gate synaptic
+		(LTP) \cite{Letzkus2006}. 
+		Thus, coincidence between basal and apical input appears to also gate synaptic
 		plasticity.
 		
 		In a supervised learning scheme, where the top down input
