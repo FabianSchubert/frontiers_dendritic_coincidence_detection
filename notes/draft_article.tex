@@ -68,7 +68,7 @@
 		the most straight-forward learning rule for the basal synaptic
 		weights would be derived from an appropriate loss function,
 		such as a mean square error, based on the difference between 
-		basal and apical input, i.e. $I_{\rm p} - I_{\rm d}$. Theoretical work has 
+		basal and apical input, i.e.\ $I_{\rm p} - I_{\rm d}$. Theoretical work has 
 		investigated possible learning mechanisms
 		that could utilize an intracellular error signal
 		\citep{Urbanczik_2014,Schiess_2016,Guerguiev_2017}.
@@ -76,23 +76,23 @@
 		evidence for a physical quantity encoding such an error 
 		is---to our knowledge---yet to be found. 
 		On the other hand, Hebbian-type plasticity is extensively
-		documented in experiments. Therefore, our work was
+		documented in experiments. Therefore, our work is
 		based on the question whether the non-linear interactions
 		between basal and apical synaptic input could, when
 		combined with a Hebbian plasticity rule, allow a neuron
 		to learn to reproduce an apical teaching signal in its
 		proximal input.
 		
-		In our work, we combined a phenomenological model that generates the output
+		In our work, we combine a phenomenological model that generates the output
 		firing rate as a function of two streams of synaptic input (subsuming basal and apical input)
-		with Hebbian as well as BCM-like plasticity rules on basal synapses. We hypothesized that 
+		with Hebbian, as well as BCM-like plasticity rules on basal synapses. We hypothesized that 
 		this combination of neural activation and plasticity rules would lead to an
 		increased correlation between basal and apical input.
 		
 		Furthermore, this temporal alignment could potentially facilitate apical inputs to act
 		as top-down teaching signals, without the need for an explicit error-driven
-		learning rule. Thus, we also tested our model in a simple linear 
-		supervised classification task and compared it to the performance of a simple
+		learning rule. Thus, we also test our model in a simple linear 
+		supervised classification task and compare it with the performance of a simple
 		point neuron equipped with similar plasticity rules.
 		
 		\section{Model}
@@ -135,15 +135,15 @@
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
-		In all our numerical experiments, we compared this model with a 
+		In all our numerical experiments, we compare this model with a 
 		simple point neuron model that was given by
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
 			y(t) = \sigma\left(I_{\rm p}(t) + I_{\rm d}(t) - \theta \right) \; .
 		\end{equation}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		In all our numerical experiments, the apical input $I_{\rm d}$ was generated
-		``as is", meaning, it was not dynamically calculated as a superposition
+		The apical input $I_{\rm d}$ was generated
+		`as is', meaning, it is not dynamically calculated as a superposition
 		of multiple presynaptic inputs, but given by
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
@@ -153,10 +153,10 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		where $n_d(t)$ is a scaling factor, $x_d(t)$ a pre-generated
 		discrete time sequence and $b_d(t)$ a bias. Note that $n_d$ and $b_d$ 
-		are time dependent since they were subject to adaptation processes 
+		are time dependent since they are subject to adaptation processes 
 		that are described in the next section.
 		
-		Similarly, $I_{\rm p}(t)$ was given by
+		Similarly, $I_{\rm p}(t)$ is given by
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
 			I_{\rm p}(t) = n_p(t) \sum_{i=1}^{N} x_{p,i}(t) w_i(t) - b_p(t) \; ,
@@ -164,7 +164,7 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		where $N$ is the number of presynaptic afferents, $x_{p,i}(t)$ the
 		corresponding sequences and $w_i(t)$ the synaptic efficacies.
-		As for $I_{\rm d}(t)$, $n_p(t)$ and $b_p(t)$ was used as a time dependent
+		As for $I_{\rm d}(t)$, $n_p(t)$ and $b_p(t)$ is a time dependent
 		scaling and bias.
 		
 		\subsection{Plasticity}
@@ -180,7 +180,7 @@
 			\tilde{y}(t+1) &= (1-\mu_{av})\tilde{y}(t) + \mu_{av}y(t+1)
 		\end{align}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		Additionally, we used a
+		Additionally, we use a
 		synaptic normalization constraint
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
@@ -197,7 +197,7 @@
 %		(given by $\alpha$, see Fig.~\ref{fig:comp_model}). Hence, we set
 %		$\theta_y = (1+\alpha)/2$.
 		
-		For comparative reasons, the point neuron model was equipped with the
+		For comparative reasons, the point neuron model is equipped with the
 		same plasticity rule for the proximal weights as \eqref{eq:bcm_plast}. 
 %		except that the threshold $\theta_y$ was dynamically adjusted as
 %		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -208,7 +208,7 @@
 %		which is an implementation of a running average of the square activity,
 %		as used in the classic BCM-rule.
 		
-		Additionally, the scaling and bias variables were changing dynamically
+		Additionally, the scaling and bias variables are changing dynamically
 		according to the following homeostatic plasticity rules:
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{align}
@@ -286,10 +286,10 @@
 		allowed us to calculate $\rho[I_{\rm p},I_{\rm d}]$ as a function of the distraction
 		parameters $s$ and $N_{dist}$. The results for both neuron models 
 		is shown in Fig.~\ref{fig:corr_dimension_scaling}. Here, the total number of 
-		basal inputs was $N=10$. One can observe a decorrelation transition for 
+		basal inputs is $N=10$. One can observe a decorrelation transition for 
 		both models. However, the compartment model supports a significantly stronger
 		distraction in terms of the scaling factor $s$ as compared to the point model.
-		This was a first confirmation of our hypothesis that nonlinear interactions
+		This is a first confirmation of our hypothesis that nonlinear interactions
 		between basal and apical input could improve learning guided by top-down signals.
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -311,7 +311,7 @@
 		For this purpose, we constructed presynaptic basal input as illustrated
 		in Fig.~\ref{fig:illustration_classification}.
 		Written in vector form,
-		each sample from the basal input was generated from the following expression:
+		each sample from the basal input is generated from the following expression:
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
 			\mathbf{x}_p(t) = \mathbf{b} + \mathbf{a}\left(c(t) + \sigma_a \zeta_a(t) \right) 
@@ -333,8 +333,8 @@
 		The free parameter $s$ parameterized
 		the standard deviation along this subspace orthogonal to $\mathbf{a}$.
 		As indicated by the time dependence, the Gaussian and binary random
-		variables were drawn for each time step. The vectors
-		$\mathbf{b}$, $\mathbf{a}$, and $\mathbf{v}_{dist,i}$ were generated
+		variables are drawn for each time step. The vectors
+		$\mathbf{b}$, $\mathbf{a}$, and $\mathbf{v}_{dist,i}$ are generated
 		once before the beginning of a simulation run.
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
@@ -349,7 +349,7 @@
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
-		For the classification task, we created two output neurons receiving
+		For the classification task, we set up two output neurons receiving
 		the same basal presynaptic input, while the top-down input encoded
 		the correct linear classification in a one-hot scheme, that is
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -380,7 +380,7 @@
 		
 		The resulting accuracy as a function of $N_{dist}$ and $s$
 		is shown in Fig.~\ref{fig:classification_accuracy}.
-		Albeit differences were small, the compartment model did
+		Albeit differences are small, the compartment model does
 		show a better overall accuracy for the tested parameter range.
 		
 		\subsection{Non-Hebbian Learning Rules}
@@ -404,8 +404,8 @@
 		
 		However, for our compartment model, we chose to explicitly set the
 		threshold to be the mean value between the high- and low-activity regime
-		in our compartment model, i.e.\ $\theta_M = (1+\alpha)/2$. By doing so, LTP was
-		preferably induced if both basal and apical input was present at the same
+		in our compartment model, i.e.\ $\theta_M = (1+\alpha)/2$. By doing so, LTP is
+		preferably induced if both basal and apical input are present at the same
 		time. Furthermore, instead of the weight decay term, we chose to keep
 		the weight normalization as introduced in \eqref{eq:weight_norm}.
 		Obviously, for the point model, the reasoning behind our choice of
@@ -417,13 +417,13 @@
 		Fig.~\ref{fig:classification_accuracy_bcm} (classification task) and 
 		Fig.~\ref{fig:classification_accuracy_bcm} (Basal-Apical alignment). 
 		While the accuracy of the classification for the point model
-		was at most comparable to Hebbian learning, the BCM-like rule for the 
-		compartment model significantly increased the accuracy for the tested
+		is at most comparable to Hebbian learning, the BCM-like rule for the 
+		compartment model significantly increases the accuracy for the tested
 		parameter range (compare Fig.~\ref{fig:classification_accuracy}).
 		
-		Likewise, the compartment model also significantly benefited from
+		Likewise, the compartment model significantly benefits from
 		the BCM rule in terms of basal-apical alignment, while only marginal
-		improvements could be observed for the point model
+		improvements can be observed for the point model
 		(compare Fig.~\ref{fig:corr_dimension_scaling_bcm} 
 		with Fig.~\ref{fig:corr_dimension_scaling}).
 		
