@@ -14,7 +14,6 @@ N_sweep_distraction_dimension = 9
 N_samples = 1
 distract_scaling = np.linspace(0.,10.,N_sweep_distraction_scaling)
 
-
 N_p = 100
 N_out = 2
 
@@ -156,7 +155,8 @@ def run_sim(arglist):
     I_p_test = n_p[-1] * (w_p[-1] @ x_p_test.T).T - b_p[-1]
     
     pred = np.argmax(I_p_test,axis=1)
-    return (1.*(pred == lab_test)).mean(), I_p_test[:T_sample], lab_test[:T_sample]
+    
+    return (1.*(pred == lab_test)).mean(), I_p_test[:T_sample], lab_test[:T_sample], w_p, Q
 
 #'''
 pool = Pool()

@@ -363,7 +363,8 @@
 		As in the previous experiment, we ran a full simulation until 
 		all dynamic variables reached a stationary state. After this,
 		a test run without plasticity and with the apical input turned off 
-		was used to evaluate the classification	performance. For each sample,
+		was used to evaluate the classification	performance. 
+		For each sample,
 		the index of the neuron with the highest activity was used
 		as the predicted class. Accuracy was then calculated as the fraction
 		of correctly classified samples.
@@ -382,6 +383,13 @@
 		is shown in Fig.~\ref{fig:classification_accuracy}.
 		Albeit differences are small, the compartment model does
 		show a better overall accuracy for the tested parameter range.
+		It should be noted, though, that the advantage of the compartment
+		model becomes even less prominent when looking at the actual
+		correlation between proximal and distal input as a
+		measure of successful learning (as done in the previous section).
+		Fig.~\ref{fig:classification_correlation} in the supplementary 
+		section shows that the compartment model allows for a marginally
+		larger scaling among the distraction dimensions.
 		
 		\subsection{Non-Hebbian Learning Rules}
 		\label{sect:non-hebbian}
@@ -419,10 +427,20 @@
 		While the accuracy of the classification for the point model
 		is at most comparable to Hebbian learning, the BCM-like rule for the 
 		compartment model significantly increases the accuracy for the tested
-		parameter range (compare Fig.~\ref{fig:classification_accuracy}).
+		parameter range (compare Fig.~\ref{fig:classification_accuracy}). 
+		Still, as for the Hebbian learning rule, this result should be taken
+		with a grain of salt, as Fig.~\ref{fig:classification_correlation_bcm}
+		in the supplementary section indicates that a rather large part of 
+		the region ($s>5$) showing good
+		classification performance for the compartment model in 
+		Fig.~\ref{fig:classification_accuracy_bcm} does hardly exhibit any actual
+		correlation between proximal and distal input, making it likely that
+		the accuracy of the classification could be easily impaired in this regime, 
+		e.g.\ by injecting small amounts of noise.
 		
-		Likewise, the compartment model significantly benefits from
-		the BCM rule in terms of basal-apical alignment, while only marginal
+		The compartment model also significantly benefits from
+		the BCM rule in terms of basal-apical alignment as tested in Sect.~\ref{sect:alignment}, 
+		while only marginal
 		improvements can be observed for the point model
 		(compare Fig.~\ref{fig:corr_dimension_scaling_bcm} 
 		with Fig.~\ref{fig:corr_dimension_scaling}).
@@ -453,6 +471,30 @@
 		\section{Discussion}
 		
 		To be continued
+		
+		\section{Supplementary Material}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}
+			\includegraphics[width=\columnwidth]{classification_correlation_dimension_scaling}
+			\caption{{\bf Alignment between Basal and Apical Input after Binary Classification Learning.}
+				Correlation between proximal and distal Input after training as described in 
+				Sect.~\ref{sect:classification}.}
+			\label{fig:classification_correlation}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}
+			\includegraphics[width=\columnwidth]{classification_correlation_dimension_scaling_bcm}
+			\caption{{\bf Alignment between Basal and Apical Input after Binary Classification Learning
+					using a BCM-like Rule.}
+				Correlation between proximal and distal Input after linear classification 
+				training as described in Sect.~\ref{sect:classification}, but using the plasticity
+				rules given in Sect.~\ref{sect:non-hebbian}.}
+			\label{fig:classification_correlation_bcm}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
 		
 		
 		\bibliography{Dendritic_Learning}
