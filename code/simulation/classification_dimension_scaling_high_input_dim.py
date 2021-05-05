@@ -9,6 +9,8 @@ from datetime import datetime
 
 from multiprocessing import Pool
 
+N_processes = 6 #number of parallel processes
+
 N_sweep_distraction_scaling = 20
 N_sweep_distraction_dimension = 9
 N_samples = 1
@@ -156,14 +158,14 @@ def run_sim(arglist):
     
     pred = np.argmax(I_p_test,axis=1)
     
-    return (1.*(pred == lab_test)).mean(), I_p_test[:T_sample], lab_test[:T_sample], w_p, Q
+    return (1.*(pred == lab_test)).mean(), I_p_test[:T_sample], lab_test[:T_sample]
 
 #'''
-pool = Pool()
+pool = Pool(N_processes)
 output_list = list(tqdm(pool.imap_unordered(run_sim, params), total=len(params)))
 
-#with Pool() as p:
-#    perf_list = p.map(run_sim,params)
+#with Pool(N_processes) as p:
+#    output_list = p.map_async(run_sim,params)
 
 k = 0
 for mode in modes:

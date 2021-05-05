@@ -14,7 +14,7 @@
 \title{Nonlinear Dendritic Coincidence Detection for Supervised Learning}
 
 \usepackage[numbers]{natbib}
-\bibliographystyle{abbrvnat}
+\bibliographystyle{nourlplainnat.bst}
 
 \renewcommand{\arraystretch}{1.5}
 
@@ -71,12 +71,13 @@
 		basal and apical input, i.e.\ $I_{\rm p} - I_{\rm d}$. Theoretical work has 
 		investigated possible learning mechanisms
 		that could utilize an intracellular error signal
-		\citep{Urbanczik_2014,Schiess_2016,Guerguiev_2017}.
+		\citep{Urbanczik2014,Schiess2016,Guerguiev2017}.
 		However, a clear experimental
 		evidence for a physical quantity encoding such an error 
 		is---to our knowledge---yet to be found. 
 		On the other hand, Hebbian-type plasticity is extensively
-		documented in experiments. Therefore, our work is
+		documented in experiments \cite{Gustafsson1987,Debanne1994,Markram1997,Bi1998}. 
+		Therefore, our work is
 		based on the question whether the non-linear interactions
 		between basal and apical synaptic input could, when
 		combined with a Hebbian plasticity rule, allow a neuron
@@ -470,7 +471,12 @@
 		
 		\section{Discussion}
 		
-		To be continued
+		The idea of target-backpropagation in multi-layered networks
+		has already been proposed in different variants
+		\cite{Bengio2014,Lee2015,Guerguiev2017}. Yet, all of these approaches
+		assume a learning rule being dependent on an explicit error term 
+		between top-down and bottom up signals guiding plasticity in some form
+		or another.
 		
 		\section{Supplementary Material}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

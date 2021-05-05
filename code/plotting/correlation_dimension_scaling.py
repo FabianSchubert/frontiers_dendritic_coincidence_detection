@@ -8,8 +8,6 @@ from stdParams import *
 from src.plottools import gen_mesh_ax
 plt.style.use('mpl_style.mplstyle')
 import os
-
-import os
 import sys
 
 files = os.listdir(os.path.join(DATA_DIR,"correlation_dimension_scaling"))

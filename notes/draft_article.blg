@@ -1,46 +1,48 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: draft_article.aux
-The style file: abbrvnat.bst
+The style file: nourlplainnat.bst.bst
 Database file #1: Dendritic_Learning.bib
-You've used 21 entries,
-            2773 wiz_defined-function locations,
-            805 strings with 10222 characters,
-and the built_in function-call counts, 10593 in all, are:
-= -- 1024
-> -- 579
-< -- 12
-+ -- 196
-- -- 174
-* -- 958
-:= -- 1652
-add.period$ -- 106
-call.type$ -- 21
-change.case$ -- 121
-chr.to.int$ -- 20
-cite$ -- 42
-duplicate$ -- 425
-empty$ -- 818
-format.name$ -- 209
-if$ -- 2202
-int.to.chr$ -- 2
-int.to.str$ -- 1
-missing$ -- 18
-newline$ -- 155
-num.names$ -- 84
-pop$ -- 179
+Warning--empty journal in Bengio2014
+You've used 27 entries,
+            2635 wiz_defined-function locations,
+            811 strings with 10882 characters,
+and the built_in function-call counts, 13540 in all, are:
+= -- 1034
+> -- 457
+< -- 4
++ -- 179
+- -- 152
+* -- 892
+:= -- 1758
+add.period$ -- 124
+call.type$ -- 27
+change.case$ -- 161
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 1152
+empty$ -- 1157
+format.name$ -- 175
+if$ -- 2740
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 305
+newline$ -- 182
+num.names$ -- 54
+pop$ -- 453
 preamble$ -- 1
-purify$ -- 100
+purify$ -- 130
 quote$ -- 0
-skip$ -- 325
+skip$ -- 260
 stack$ -- 0
-substring$ -- 431
-swap$ -- 50
-text.length$ -- 2
+substring$ -- 674
+swap$ -- 795
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 231
-warning$ -- 0
-while$ -- 92
-width$ -- 0
-write$ -- 363
+type$ -- 108
+warning$ -- 1
+while$ -- 94
+width$ -- 29
+write$ -- 383
+(There was 1 warning)
