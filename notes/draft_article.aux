@@ -18,7 +18,7 @@
 \newlabel{fig:comp_model}{{1}{2}}
 \newlabel{eq:I_d}{{4}{2}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Plasticity}{2}\protected@file@percent }
-\newlabel{eq:bcm_plast}{{6}{2}}
+\newlabel{eq:hebb_plast}{{6}{2}}
 \newlabel{eq:weight_norm}{{9}{2}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Model parameters}}{2}\protected@file@percent }
 \newlabel{tab:parameters}{{1}{2}}
@@ -34,22 +34,32 @@
 \newlabel{fig:illustration_classification}{{3}{3}}
 \citation{Bienenstock1982,Intrator1992}
 \citation{Law1994}
-\citation{Bengio2014,Lee2015,Guerguiev2017}
-\bibdata{Dendritic_Learning}
-\bibcite{Bengio2014}{{1}{}{{}}{{}}}
-\bibcite{Bi1998}{{2}{}{{}}{{}}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces {\bf  Binary Classification Accuracy.} Fraction of correctly classified patterns as illustrated in Fig.\nobreakspace  {}3\hbox {}, see Section\nobreakspace  {}3.2\hbox {}.¸}}{4}\protected@file@percent }
 \newlabel{fig:classification_accuracy}{{4}{4}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Non-Hebbian Learning Rules}{4}\protected@file@percent }
 \newlabel{sect:non-hebbian}{{3.3}{4}}
+\newlabel{eq:bcm_rule}{{19}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces {\bf  Binary Classification Accuracy, BCM Rule.} Fraction of correctly classified patterns as illustrated in Fig.\nobreakspace  {}3\hbox {}, after training with a BCM-like learning rule.¸}}{4}\protected@file@percent }
 \newlabel{fig:classification_accuracy_bcm}{{5}{4}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces {\bf  Alignment between Basal and Apical Input, BCM Rule.} Color encodes the Pearson correlation $\rho [I_p,I_d]$ for different number of orthogonal distraction directions $N_{dist}$ and the corresponding scaling faction $s$ after training with a BCM-like rule. Compare to Fig.\nobreakspace  {}2\hbox {}.}}{4}\protected@file@percent }
 \newlabel{fig:corr_dimension_scaling_bcm}{{6}{4}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}Supplementary Material}{4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Objective Function of BCM Learning in the Compartment Model}{4}\protected@file@percent }
+\newlabel{sect:Obj_Func}{{3.4}{4}}
+\citation{Bengio2014,Lee2015,Guerguiev2017}
+\bibdata{Dendritic_Learning}
+\bibcite{Bengio2014}{{1}{}{{}}{{}}}
+\bibcite{Bi1998}{{2}{}{{}}{{}}}
 \bibcite{Bienenstock1982}{{3}{}{{}}{{}}}
 \bibcite{Branco2011}{{4}{}{{}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces {\bf  Objective Function for the Proximal Weight Update.} The approximate objective function for the proximal weights as given in \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 22\hbox {}\unskip \@@italiccorr )}}. This corresponds to a combination of using \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 1\hbox {}\unskip \@@italiccorr )}} together with \textup  {\hbox {\mathsurround \z@ \normalfont  (\ignorespaces 19\hbox {}\unskip \@@italiccorr )}}. Note the ridge-like structure along the $I_p$-$I_d$ diagonal, which supports the alignment between proximal and distal input.}}{5}\protected@file@percent }
+\newlabel{fig:obj_func}{{7}{5}}
+\newlabel{eq:obj_func}{{22}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces {\bf  Alignment between Basal and Apical Input after Binary Classification Learning.} Correlation between proximal and distal Input after training as described in Sect.\nobreakspace  {}3.2\hbox {}.}}{5}\protected@file@percent }
+\newlabel{fig:classification_correlation}{{8}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces {\bf  Alignment between Basal and Apical Input after Binary Classification Learning using a BCM-like Rule.} Correlation between proximal and distal Input after linear classification training as described in Sect.\nobreakspace  {}3.2\hbox {}, but using the plasticity rules given in Sect.\nobreakspace  {}3.3\hbox {}.}}{5}\protected@file@percent }
+\newlabel{fig:classification_correlation_bcm}{{9}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Supplementary Material}{5}\protected@file@percent }
 \bibcite{Debanne1994}{{5}{}{{}}{{}}}
 \bibcite{Ebner2019}{{6}{}{{}}{{}}}
 \bibcite{Guerguiev2017}{{7}{}{{}}{{}}}
@@ -58,10 +68,6 @@
 \bibcite{Hay2011}{{10}{}{{}}{{}}}
 \bibcite{Intrator1992}{{11}{}{{}}{{}}}
 \bibcite{Larkum2013}{{12}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces {\bf  Alignment between Basal and Apical Input after Binary Classification Learning.} Correlation between proximal and distal Input after training as described in Sect.\nobreakspace  {}3.2\hbox {}.}}{5}\protected@file@percent }
-\newlabel{fig:classification_correlation}{{7}{5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces {\bf  Alignment between Basal and Apical Input after Binary Classification Learning using a BCM-like Rule.} Correlation between proximal and distal Input after linear classification training as described in Sect.\nobreakspace  {}3.2\hbox {}, but using the plasticity rules given in Sect.\nobreakspace  {}3.3\hbox {}.}}{5}\protected@file@percent }
-\newlabel{fig:classification_correlation_bcm}{{8}{5}}
 \bibcite{Larkum2009}{{13}{}{{}}{{}}}
 \bibcite{Law1994}{{14}{}{{}}{{}}}
 \bibcite{Lee2015}{{15}{}{{}}{{}}}

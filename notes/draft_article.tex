@@ -110,9 +110,9 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{align}
 		\begin{split}
-		y\left(t\right) &= \sigma\left( I_{\rm p}(t) - \theta_{p0} \right)
+		y\left(t\right) &= \alpha  \sigma\left( I_{\rm p}(t) - \theta_{p0} \right)
 		\left[1-\sigma\left(I_{\rm d}(t) - \theta_d\right)\right] \\
-		&+ \alpha \sigma\left(I_{\rm d}(t) - \theta_d \right)\sigma\left( I_{\rm p}(t) - \theta_{p1} \right)
+		&+ \sigma\left(I_{\rm d}(t) - \theta_d \right)\sigma\left( I_{\rm p}(t) - \theta_{p1} \right)
 		\end{split} \label{eq:comp_model}\\
 		\sigma(x) &\equiv \frac{1}{1+\exp(-4x)} \; .
 		\end{align}
@@ -176,7 +176,7 @@
 		\begin{align}
 			w_i(t+1) &= w_i(t) + \mu_w \left(x_{p,i}(t) - \tilde{x}_{p,i}(t)\right)
 			\left(y(t) - \tilde{y} \right)
-			\label{eq:bcm_plast} \\
+			\label{eq:hebb_plast} \\
 			\tilde{x}_{p,i}(t+1) &= (1-\mu_{av})\tilde{x}_{p,i}(t) + \mu_{av}x_{p,i}(t+1) \\
 			\tilde{y}(t+1) &= (1-\mu_{av})\tilde{y}(t) + \mu_{av}y(t+1)
 		\end{align}
@@ -199,7 +199,7 @@
 %		$\theta_y = (1+\alpha)/2$.
 		
 		For comparative reasons, the point neuron model is equipped with the
-		same plasticity rule for the proximal weights as \eqref{eq:bcm_plast}. 
+		same plasticity rule for the proximal weights as \eqref{eq:hebb_plast}. 
 %		except that the threshold $\theta_y$ was dynamically adjusted as
 %		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %		\begin{equation}
@@ -295,7 +295,7 @@
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{corr_dimension_scaling}
+			\includegraphics[width=\columnwidth]{corr_dimension_scaling_high_input_dim}
 			\caption{{\bf Alignment between Basal and Apical Input.} Color
 			encodes the Pearson correlation $\rho[I_p,I_d]$ for different
 			number of orthogonal distraction directions $N_{dist}$ 
@@ -371,7 +371,7 @@
 		of correctly classified samples.
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{classification_dimension_scaling}
+			\includegraphics[width=\columnwidth]{classification_dimension_scaling_high_input_dim}
 			\caption{{\bf Binary Classification Accuracy.}
 			Fraction of correctly classified patterns as illustrated in
 			Fig.~\ref{fig:illustration_classification}, see 
@@ -400,7 +400,7 @@
 		The form of the BCM-rule we consider here reads
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{equation}
-		\Delta w_i \propto y\left(y - \theta_M\right) x_i - \epsilon w_i \; ,
+		\Delta w_i \propto y\left(y - \theta_M\right) x_i - \epsilon w_i \; , \label{eq:bcm_rule}
 		\end{equation}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		where $\theta_M$ is a threshold defining a transition from LTP to LTD and
@@ -448,7 +448,7 @@
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{classification_dimension_scaling_bcm}
+			\includegraphics[width=\columnwidth]{classification_dimension_scaling_bcm_high_input_dim}
 			\caption{{\bf Binary Classification Accuracy, BCM Rule.}
 				Fraction of correctly classified patterns as illustrated in
 				Fig.~\ref{fig:illustration_classification}, after training with
@@ -459,7 +459,7 @@
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{corr_dimension_scaling_bcm}
+			\includegraphics[width=\columnwidth]{corr_dimension_scaling_bcm_high_input_dim}
 			\caption{{\bf Alignment between Basal and Apical Input, BCM Rule.}
 				Color encodes the Pearson correlation $\rho[I_p,I_d]$ for different
 				number of orthogonal distraction directions $N_{dist}$ 
@@ -469,6 +469,59 @@
 		\end{figure}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
+		\subsection{Objective Function of BCM Learning in the Compartment Model}
+		\label{sect:Obj_Func}
+		
+		To form a better understanding of why the BCM-type learning rule
+		in combination with the implemented compartment model, we can formalize
+		the learning rule for the proximal weights in terms of an objective function.
+		For this purpose, we further simplify \eqref{eq:comp_model} by replacing
+		the sigmoid functions $\sigma(x)$ by a simple step function $\Theta(x)$. 
+		This does not change the overall shape or topology of the activation
+		in the $(I_p,I_d)$ space but merely makes the smooth transitions sharp
+		and instantaneous. Using $\Delta w_i \propto y\left(y - \theta_M \right) x_i$,
+		we find in this case
+		\begin{equation}
+			\begin{split}
+			\Delta w_i \propto [ (1-\alpha) \Theta(I_d - \theta_{d})\Theta(p-\theta_{p1})
+			\\ + \alpha (\alpha - 1)\Theta(\theta_{d} - I_d)\Theta(p-\theta_{p0}) ]x_i \; .
+			\end{split}
+		\end{equation}
+		Noting that $\Theta(x)$ is the first derivative of the ReLu function $[x]^+ \equiv \max(0,x)$,
+		we find that this update rule can be written as
+		\begin{align}
+			\Delta w_i &\propto \frac{\partial \mathcal{L}_p}{\partial w_i}\\
+			\begin{split}
+			\mathcal{L}_p &\equiv (1-\alpha) \Theta(I_d - \theta_{d})[p-\theta_{p1}]^+\\
+			&\;\; + \alpha (\alpha - 1)\Theta(\theta_{d} - I_d)[p-\theta_{p0}]^+ \; .
+			\end{split}\label{eq:obj_func}
+		\end{align} 
+		The objective function is shown in Fig.~\ref{fig:obj_func}. One can observe
+		that states closer to the $I_p$-$I_d$ diagonal are preferred, while the opposite is the 
+		case for off-diagonal states. This provides an explanation why the BCM-rule can induce 
+		an alignment between proximal and distal inputs when used in combination with the nonlinear 
+		compartment model. 
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}
+			\includegraphics[width=\columnwidth]{obj_func}
+			\caption{{\bf Objective Function for the Proximal Weight Update.} The 
+			approximate objective function for the proximal weights as given in
+			\eqref{eq:obj_func}. This corresponds to a combination of using 
+		\eqref{eq:comp_model} together with \eqref{eq:bcm_rule}. Note the ridge-like
+		structure along the $I_p$-$I_d$ diagonal, which supports the alignment between
+		proximal and distal input.}
+		\label{fig:obj_func}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		It should be noted, though, that to a certain extent, the objective function is not
+		scale-invariant in the sense that the prior distributions of both proximal 
+		and distal inputs need a certain mean and variance to cover a region of input
+		state for which the described effects can take place. This, however, is 
+		guaranteed by the homeostatic processes acting simultaneously on the gains
+		and biases.
+		
+		
 		\section{Discussion}
 		
 		The idea of target-backpropagation in multi-layered networks
@@ -476,12 +529,20 @@
 		\cite{Bengio2014,Lee2015,Guerguiev2017}. Yet, all of these approaches
 		assume a learning rule being dependent on an explicit error term 
 		between top-down and bottom up signals guiding plasticity in some form
-		or another.
+		or another. In this work, we considered an alternative approach, that is,
+		the correlation between proximal and distal input as a maximization
+		objective.
+		
+		We have demonstrated that in a simple supervised learning scheme, the
+		proposed two-compartment transfer function significantly increases
+		the robustness of the learning process against distracting components
+		in the proximal input space. This was most prominently found when
+		combined with a BCM-like learning rule.
 		
 		\section{Supplementary Material}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{classification_correlation_dimension_scaling}
+			\includegraphics[width=\columnwidth]{classification_correlation_dimension_scaling_high_input_dim}
 			\caption{{\bf Alignment between Basal and Apical Input after Binary Classification Learning.}
 				Correlation between proximal and distal Input after training as described in 
 				Sect.~\ref{sect:classification}.}
@@ -491,7 +552,7 @@
 		
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\begin{figure}
-			\includegraphics[width=\columnwidth]{classification_correlation_dimension_scaling_bcm}
+			\includegraphics[width=\columnwidth]{classification_correlation_dimension_scaling_bcm_high_input_dim}
 			\caption{{\bf Alignment between Basal and Apical Input after Binary Classification Learning
 					using a BCM-like Rule.}
 				Correlation between proximal and distal Input after linear classification 

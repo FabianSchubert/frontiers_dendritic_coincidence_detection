@@ -25,13 +25,20 @@ def L(p,d):
     return (.5*(1.-alpha)*((d-thetad)>0.)*(np.maximum(0.,p-thetap1)-np.maximum(0.,-thetap1))
             -((alpha+1.)/2.-alpha**2.)*((d-thetad)<=0.)*np.maximum(0.,p-thetap0))
 
-fig = plt.figure()
+fig = plt.figure(figsize=(FIG_WIDTH,FIG_WIDTH*0.7))
 ax = fig.add_subplot(111, projection='3d')
 
 ax.plot_surface(P,D,L(P,D),cmap=cm.coolwarm,linewidth=0.2,rstride=6,cstride=6)
 
 ax.set_xlabel(r'$I_{\rm p}$')
 ax.set_ylabel(r'$I_{\rm d}$')
-ax.set_zlabel(r'$L$')
+ax.set_zlabel(r'$\mathcal{L}_{\rm p}$')
+
+ax.set_facecolor((0.,0.,0.,0.))
+
+fig.tight_layout()
+
+fig.savefig(os.path.join(PLOT_DIR,"obj_func.pdf"))
+fig.savefig(os.path.join(PLOT_DIR,"obj_func.png"),dpi=600)
 
 plt.show()
