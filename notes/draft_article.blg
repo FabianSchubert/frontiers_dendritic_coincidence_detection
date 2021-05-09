@@ -4,45 +4,45 @@ The top-level auxiliary file: draft_article.aux
 The style file: nourlplainnat.bst.bst
 Database file #1: Dendritic_Learning.bib
 Warning--empty journal in Bengio2014
-You've used 27 entries,
-            2635 wiz_defined-function locations,
-            811 strings with 10882 characters,
-and the built_in function-call counts, 13540 in all, are:
-= -- 1034
-> -- 457
-< -- 4
-+ -- 179
-- -- 152
-* -- 892
-:= -- 1758
-add.period$ -- 124
-call.type$ -- 27
-change.case$ -- 161
-chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 1152
-empty$ -- 1157
-format.name$ -- 175
-if$ -- 2740
-int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 305
-newline$ -- 182
-num.names$ -- 54
-pop$ -- 453
+You've used 30 entries,
+            2768 wiz_defined-function locations,
+            889 strings with 13183 characters,
+and the built_in function-call counts, 15293 in all, are:
+= -- 1462
+> -- 838
+< -- 19
++ -- 283
+- -- 252
+* -- 1359
+:= -- 2352
+add.period$ -- 137
+call.type$ -- 30
+change.case$ -- 174
+chr.to.int$ -- 29
+cite$ -- 61
+duplicate$ -- 634
+empty$ -- 1200
+format.name$ -- 302
+if$ -- 3200
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 27
+newline$ -- 202
+num.names$ -- 120
+pop$ -- 277
 preamble$ -- 1
-purify$ -- 130
+purify$ -- 144
 quote$ -- 0
-skip$ -- 260
+skip$ -- 483
 stack$ -- 0
-substring$ -- 674
-swap$ -- 795
-text.length$ -- 4
+substring$ -- 662
+swap$ -- 84
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 330
 warning$ -- 1
-while$ -- 94
-width$ -- 29
-write$ -- 383
+while$ -- 136
+width$ -- 0
+write$ -- 486
 (There was 1 warning)

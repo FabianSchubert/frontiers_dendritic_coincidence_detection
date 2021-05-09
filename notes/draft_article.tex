@@ -15,6 +15,7 @@
 
 \usepackage[numbers]{natbib}
 \bibliographystyle{nourlplainnat.bst}
+%\bibliographystyle{abbrvnat}
 
 \renewcommand{\arraystretch}{1.5}
 
@@ -515,14 +516,23 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		
 		It should be noted, though, that to a certain extent, the objective function is not
-		scale-invariant in the sense that the prior distributions of both proximal 
+		scale-invariant (as would be e.g.\ if the squared error was used) in the sense 
+		that the prior distributions of both proximal 
 		and distal inputs need a certain mean and variance to cover a region of input
-		state for which the described effects can take place. This, however, is 
-		guaranteed by the homeostatic processes acting simultaneously on the gains
+		states for which the described effects can take place. As a counterexample,
+		one could imagine that the input samples only covered a flat of $\mathcal{L}_p$, as
+		for example in Fig.~\ref{fig:obj_func} on the left, leading to a zero average gradient. 
+		This is prevented, however, by the homeostatic processes acting simultaneously on the gains
 		and biases.
 		
 		
 		\section{Discussion}
+		
+		We have demonstrated that in a simple supervised learning scheme, the
+		proposed two-compartment transfer function significantly increases
+		the robustness of the learning process against distracting components
+		in the proximal input space. This was most prominently found when
+		combined with a BCM-like learning rule.
 		
 		The idea of target-backpropagation in multi-layered networks
 		has already been proposed in different variants
@@ -531,13 +541,32 @@
 		between top-down and bottom up signals guiding plasticity in some form
 		or another. In this work, we considered an alternative approach, that is,
 		the correlation between proximal and distal input as a maximization
-		objective.
+		objective, in combination with homeostatic adaptation rules that regulate
+		proximal and distal inputs into a desired ``working regime'', 
+		see Sect.~\ref{sect:Obj_Func}. 
+		Since $I_p$ is a linear projection of the 
+		proximal input space, maximizing the correlation between
+		$I_p$ and $I_d$ can be regarded as a form of canonical correlation
+		analysis (CCA) \cite{Haerdle2007}. The idea of investigating CCA as a
+		possible mode of synaptic learning has previously been investigated by
+		\citet{Haga2018}. Interestingly, according to the authors, a 
+		BCM-learning term in the plasticity dynamics accounts for principal component
+		analysis in the input space, while CCA requires an additional multiplicative
+		term between local basal and apical activity. In contrast, our results
+		indicate that such a multiplicative term is not required to drive basal
+		synaptic plasticity towards a maximal alignment between basal and apical
+		input, even in the presence of distracting principal components.
 		
-		We have demonstrated that in a simple supervised learning scheme, the
-		proposed two-compartment transfer function significantly increases
-		the robustness of the learning process against distracting components
-		in the proximal input space. This was most prominently found when
-		combined with a BCM-like learning rule.
+		As we did not include higher-dimensional distal input patterns, it
+		remains an open question how target signals would be formed in
+		multi-layered network structures. However, as previous works have
+		indicated, random top-down weights can be sufficient for
+		successful credit assignment and learning \cite{Lillicrap2016,Guerguiev2017}.
+		Therefore, our results could potentially also be transferred to deeper
+		network structures, where plasticity is guided by local errors between
+		top-down and bottom-up signals.
+		
+		
 		
 		\section{Supplementary Material}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
