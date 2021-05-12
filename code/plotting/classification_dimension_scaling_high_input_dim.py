@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
 from stdParams import *
-from src.plottools import gen_mesh_ax
+from src.plottools import gen_mesh_ax, colorbar
 plt.style.use('mpl_style.mplstyle')
 import os
 import sys
@@ -58,16 +58,22 @@ n_sweep = perf.shape[2]
 
 perf_mean = perf.mean(axis=3)
 
-fig, ax = plt.subplots(1,3,gridspec_kw={'width_ratios': [15,15,1]}, figsize=(FIG_WIDTH,FIG_WIDTH*0.45))
+fig, ax = plt.subplots(1,3,gridspec_kw={'width_ratios': [1,1,1]}, figsize=(FIG_WIDTH,FIG_WIDTH*0.35))
 
 pc0 = ax[0].pcolormesh(s_ax,dim_ax,perf_mean[:,:,0].T,rasterized=True,vmin=0.5,vmax=1.)
 pc1 = ax[1].pcolormesh(s_ax,dim_ax,perf_mean[:,:,1].T,rasterized=True,vmin=0.5,vmax=1.)
+bars0 = ax[2].barh(dim-2.5,perf_mean[:,:,0].sum(axis=0),height=5,label="Comp.")
+bars1 = ax[2].barh(dim+2.5,perf_mean[:,:,1].sum(axis=0),height=5,label="Point")
+
+ax[2].legend()
 
 ax[0].set_xlabel(r'$s$')
 ax[1].set_xlabel(r'$s$')
 
-ax[0].set_ylabel(r'$N_{dist}$')
-ax[1].set_ylabel(r'$N_{dist}$')
+ax[0].set_ylabel(r'$N_{\rm dist}$')
+ax[1].set_ylabel(r'$N_{\rm dist}$')
+ax[2].set_ylabel(r'$N_{\rm dist}$')
+ax[2].set_xlabel(r'$\Sigma_{\rm acc}$')
 
 #ax[0].set_xlim([0.1,5.])
 #ax[1].set_xlim([0.1,5.])
@@ -75,9 +81,9 @@ ax[1].set_ylabel(r'$N_{dist}$')
 ax[0].set_title("Compartment Model",loc="right")
 ax[1].set_title("Point Model",loc="right")
 
-plt.colorbar(pc1,cax=ax[2])
+colorbar(pc1)
 
-fig.tight_layout(pad=0.2)
+fig.tight_layout(h_pad=0.,w_pad=0.,pad=0.)
 
 fig.savefig(os.path.join(PLOT_DIR,"classification_dimension_scaling_high_input_dim.pdf"))
 fig.savefig(os.path.join(PLOT_DIR,"classification_dimension_scaling_high_input_dim.png"),dpi=600)

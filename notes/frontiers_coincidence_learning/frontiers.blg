@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: frontiers.aux
+The style file: frontiersinSCNS_ENG_HUMS.bst
+Database file #1: Dendritic_Learning.bib
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty journal in Bengio2014
+You've used 33 entries,
+            3029 wiz_defined-function locations,
+            889 strings with 12210 characters,
+and the built_in function-call counts, 22137 in all, are:
+= -- 1939
+> -- 1072
+< -- 17
++ -- 505
+- -- 286
+* -- 1646
+:= -- 3265
+add.period$ -- 92
+call.type$ -- 33
+change.case$ -- 266
+chr.to.int$ -- 34
+cite$ -- 67
+duplicate$ -- 1446
+empty$ -- 1539
+format.name$ -- 398
+if$ -- 4495
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 321
+newline$ -- 237
+num.names$ -- 132
+pop$ -- 707
+preamble$ -- 1
+purify$ -- 227
+quote$ -- 0
+skip$ -- 709
+stack$ -- 0
+substring$ -- 1008
+swap$ -- 714
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 297
+warning$ -- 1
+while$ -- 149
+width$ -- 0
+write$ -- 529
+(There was 1 warning)

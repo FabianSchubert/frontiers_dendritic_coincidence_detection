@@ -14,9 +14,6 @@ N_sweep_distraction_dimension = 9
 N_samples = 1
 distract_scaling = np.linspace(0.,10.,N_sweep_distraction_scaling)
 
-
-
-
 N_p = 100
 N_out = 2
 

@@ -1,7 +1,9 @@
 font.sans-serif: Fira Sans
-axes.labelsize: 10.0
-xtick.labelsize: 10.0
-ytick.labelsize: 10.0
+axes.labelsize: 8.0
+axes.titlesize: 8.0
+legend.fontsize: 8.0
+xtick.labelsize: 8.0
+ytick.labelsize: 8.0
 patch.linewidth: 0
 
 #figure.autolayout: True
