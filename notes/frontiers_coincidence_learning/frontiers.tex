@@ -448,7 +448,7 @@ classification hyperplane, as defined by \eqref{eq_x_d_a}.}
 %---------------------------------------%
 
 %---------------------------------------%
-\subsection{Alignment between Basal and Apical Inputs}
+\subsection{Unsupervised Alignment between Basal and Apical Inputs}
 \label{sect:alignment}
 %---------------------------------------%
 
@@ -510,6 +510,30 @@ the cross correlation $\rho[I_p,I_d]$
 evaluated. During the testing phase plasticity is 
 turned off.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\columnwidth]{corr_dimension_scaling_high_input_dim}
+\caption{{\bf Unsupervised Alignment between 
+Basal and Apical Input.} Color
+encoded the Pearson correlation $\rho[I_p,I_d]$ 
+between the proximal and distal input currents,
+$I_p$ and $I_d$. Data for a range of the orthogonal 
+distraction directions, $N_{\rm dist}\in[0,N-1]$, 
+and the scaling factor $s$, as defined in
+Fig.~\ref{fig_illustration_classification}.
+The overall number of basal inputs is $N=100$.
+The quantity $\Sigma_{\rho}$ depicted in the bar
+plot is the sum, for a given $N_{\rm dist}$,
+over the correlation values $s=0,\,0.5,\,1.0\,..$ 
+used for the simulation run. Blue bars represents 
+the compartment model, orange the point model.}
+%\Delta s = 10/(N_s-1) von 0 bis 10.
+% > D.h.  s\in[0,10],   N_s = 20 ?
+\label{fig_corr_dimension_scaling}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 The overall aim of our portocal is to evaluate
 the degree $\rho[I_p,I_d]$ to which
 the proximal current $I_p$ aligns in the
@@ -530,35 +554,16 @@ For a comparison, in
 Fig.~\ref{fig_corr_dimension_scaling}
 data for both the compartment model
 and for a point neuron are presented,
-as defined respectively by
-\eqref{eq_comp_model}
-and \eqref{eq_point_neuron}.
-One can observe a decorrelation transition for 
-both models. However, the compartment model supports a 
-significantly stronger distraction in terms of the scaling 
-factor $s$ as compared to the point model. This is a first confirmation 
-of our hypothesis that nonlinear interactions between basal and 
-apical input could improve learning guided by top-down signals.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\columnwidth]{corr_dimension_scaling_high_input_dim}
-\caption{{\bf Alignment between Basal and Apical Input.} Color
-encoded the Pearson correlation $\rho[I_p,I_d]$ 
-between the proximal and distal input currents,
-$I_p$ and $I_d$. Data for a range of the orthogonal 
-distraction directions, $N_{\rm dist}\in[0,N-1]$, 
-and the scaling factor $s$, as defined in
-Fig.~\ref{fig_illustration_classification}.
-The overall number of basal inputs is $N=100$.
-The quantity $\Sigma_{\rho}$ depicted in the bar
-plot is the sum over all correlation values for the different tested values
-of $s$ under a given $N_{\rm dist}$. Blue bar represents the compartment model,
-orange the point model.}
-\label{fig_corr_dimension_scaling}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+as defined respectively by \eqref{eq_comp_model}
+and \eqref{eq_point_neuron}. A decorrelation 
+transition as a function of the distraction 
+scaling paramerer $s$ is observed for both 
+models. However, the compartment model is able
+to handle a significantly stronger distraction 
+as compared to the point model. These findings
+support the hypothesis examined here, namely
+that nonlinear interactions between basal and 
+apical input improve learning guided by top-down signals.
 
 %---------------------------------------%
 \subsection{Supervised Learning in a Linear Classification Task}
@@ -568,7 +573,8 @@ orange the point model.}
 Next, we investigated if the observed differences would also improve
 the performance in an actual supervised learning task.
 For this purpose, we constructed presynaptic basal 
-input as illustrated in Fig.~\ref{fig_illustration_classification}.
+input $x_p(t)$ as illustrated in 
+Fig.~\ref{fig_illustration_classification}.
 Written in vector form, each sample from the basal 
 input is generated from the following expression:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -645,13 +651,14 @@ section shows that the compartment model allows for a marginally
 larger scaling among the distraction dimensions.
 \\
 %---------------------------------------%
-\subsection{Non-Hebbian Learning Rules}
+\subsection{Generalized Hebbian Learning Rules}
 \label{sect:non-hebbian}
 %---------------------------------------%
 
-Instead of Hebbian learning, we also considered a BCM-like
-learning rule for the basal weights \citep{Bienenstock1982,Intrator1992}.
-The form of the BCM-rule we consider here reads
+Instead of basic Hebbian learning, we also considered 
+a BCM-like learning rule for the basal weights 
+\citep{Bienenstock1982,Intrator1992}.
+The form of the BCM-rule used here reads
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation}
 \Delta w_i \propto y\left(y - \theta_M\right) x_i - 
