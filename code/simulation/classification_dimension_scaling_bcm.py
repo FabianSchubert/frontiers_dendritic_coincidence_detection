@@ -7,6 +7,8 @@ from tqdm import tqdm
 
 from datetime import datetime
 
+import os
+
 from multiprocessing import Pool
 
 N_processes = 6 #number of parallel processes
@@ -183,10 +185,11 @@ for mode in modes:
                 I_p_samples[s,n,i,modes.index(mode),:,:] = output_list[k][1]
                 labels_samples[s,n,i,modes.index(mode),:] = output_list[k][2]
                 k += 1
+savefold = os.path.join(DATA_DIR,"classification_dimension_scaling_bcm/")
+if not os.path.exists(savefold):
+    os.makedirs(savefold)
 
-
-
-np.savez(os.path.join(DATA_DIR,"classification_dimension_scaling_bcm_high_input_dim/"
+np.savez(savefold
         +"classification_dimension_scaling_bcm_"
         +datetime.now().strftime("%d-%m-%y-%H:%M:%S")
         +".npz"),
