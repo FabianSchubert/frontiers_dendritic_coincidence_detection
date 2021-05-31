@@ -85,6 +85,9 @@ colorbar(pc1)
 
 fig.tight_layout(h_pad=0.,w_pad=0.,pad=0.)
 
+if not os.path.exists(PLOT_DIR):
+    os.makedirs(PLOT_DIR)
+
 fig.savefig(os.path.join(PLOT_DIR,"corr_dimension_scaling.pdf"))
 fig.savefig(os.path.join(PLOT_DIR,"corr_dimension_scaling.png"),dpi=600)
 

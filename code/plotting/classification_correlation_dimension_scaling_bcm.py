@@ -105,7 +105,8 @@ colorbar(pc1)
 
 fig.tight_layout(h_pad=0.,w_pad=0.,pad=0.)
 
-
+if not os.path.exists(PLOT_DIR):
+    os.makedirs(PLOT_DIR)
 
 fig.savefig(os.path.join(PLOT_DIR,"classification_correlation_dimension_scaling_bcm.pdf"))
 fig.savefig(os.path.join(PLOT_DIR,"classification_correlation_dimension_scaling_bcm.png"),dpi=600)

@@ -57,6 +57,9 @@ ax2d.set_title(r'B',loc="left",fontweight="bold")
 
 fig.tight_layout(h_pad=0.,w_pad=3.5,pad=0.1)
 
+if not os.path.exists(PLOT_DIR):
+    os.makedirs(PLOT_DIR)
+
 fig.savefig(os.path.join(PLOT_DIR,"obj_func.pdf"))
 fig.savefig(os.path.join(PLOT_DIR,"obj_func.png"),dpi=600)
 

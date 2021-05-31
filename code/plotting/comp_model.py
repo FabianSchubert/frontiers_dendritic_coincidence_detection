@@ -54,6 +54,9 @@ ax.text(2.15,-0.1,r'$\theta_{d}$',fontsize=14)
 
 fig.tight_layout(pad=0.1)
 
+if not os.path.exists(PLOT_DIR):
+    os.makedirs(PLOT_DIR)
+
 fig.savefig(os.path.join(PLOT_DIR,"plot_comp_mod_marks.pdf"),transparent=True)
 fig.savefig(os.path.join(PLOT_DIR,"plot_comp_mod_marks.png"),dpi=600,transparent=True)
 
