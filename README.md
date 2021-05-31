@@ -33,3 +33,5 @@ python3 -m plotting.classification_correlation_dimension_scaling_composite
 ```sh
 python3 -m plotting.obj_func_illustration
 ```
+
+When one of the scripts in the simulation or plotting module is run for the first time, it will create the respective /data and /plots folders in the base directory.
