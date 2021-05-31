@@ -1,13 +1,13 @@
 This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: frontiers.aux
+The top-level auxiliary file: diff.aux
 The style file: frontiersinSCNS_ENG_HUMS.bst
 Database file #1: Dendritic_Learning.bib
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--empty journal in Bengio2014
 You've used 34 entries,
             3029 wiz_defined-function locations,
-            895 strings with 12480 characters,
+            895 strings with 12470 characters,
 and the built_in function-call counts, 23014 in all, are:
 = -- 2010
 > -- 1139

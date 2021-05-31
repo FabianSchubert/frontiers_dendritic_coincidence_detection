@@ -275,7 +275,7 @@ y(t) = \sigma\left(I_p(t) + I_d(t) -
 The apical input $I_d$ is generated
 `as is', meaning, it is not dynamically 
 calculated as a superposition of multiple 
-presynaptic inputs. For concreteness, we
+presynaptic inputs. To be concrete, we
 used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation}
@@ -303,7 +303,7 @@ $w_i(t)$ the synaptic efficacies and
 $n_p(t)$ and $b_p(t)$ the (time dependent)
 scaling and bias. Tyical values for the 
 parameters used throughout this study
-are presented in Table~\ref{tab_parameters}.
+are presented Table~\ref{tab_parameters}.
 
 %---------------------------------------%
 \subsection{Homeostatic Parameter Regulation\label{sect_homeostasis}}
@@ -312,7 +312,7 @@ are presented in Table~\ref{tab_parameters}.
 The bias variables entering the definitions
 \eqref{eq_I_d} and \eqref{eq_I_p} of the distal
 proximal currrent, $I_d$ and $I_p$, 
-are assumed to adapt according to
+are assumed to adapt accodingly to
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{align}
 \label{eq_b_p_dot}
@@ -327,7 +327,7 @@ timescale for the adaption process. Over
 time, both the distal and the proximal 
 currents, $I_d$ and $I_p$, average out.
 
-Adaptation rules for the bias entering a 
+Adaption rules for the bias entering a 
 transfer function, such as
 \eqref{eq_b_d_dot} and \eqref{eq_b_p_dot},
 have the task to regulate overall activitiy
@@ -360,7 +360,7 @@ as long as the activtiy level and its variance
 fluctuate around preset target values 
 \citep{schubert2021local}. A list of 
 the parameter values used throughout this investigation 
-is also given in Table~\ref{tab_parameters}. Our choices of
+is given in Table~\ref{tab_parameters}. Our choices of
 target means and variances are based on the assumption
 that neural input should be tuned towards a certain
 working regime of the neural transfer function. In
@@ -422,7 +422,7 @@ Since classical Hebbian learning does not keep
 weights bounded, we use an additional proportional decay
 term $\epsilon w_i$ which prevents runaway
 growth using $\epsilon = 0.1$.
-With $1/\mu_w=2\cdot10^4$, learning is 
+With $1/\mu_w=2\cdot10^4$ learning is 
 assumed to be be considerably slower, 
 as usual for statistical update rules.
 For comparative reasons, the point neuron 
@@ -442,8 +442,7 @@ w_i(t+1) = w_i(t) + \mu_w \big[ y\left(y - \theta_M\right) x_i -
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 where $\theta_M$ is a threshold defining a 
-transition from long-term potentiation (LTP) to long-term depression (LTD) and, 
-again, $\epsilon$ 
+transition from LTP to LTD and, again, $\epsilon$ 
 is a decay term on the weights preventing unbounded 
 growth. In the variant introduced by \citet{Law1994}, 
 the sliding threshold is simply the temporal average 
@@ -522,13 +521,12 @@ orthogonal to the `reconstruction vector' $\mathbf{a}$
 is a distraction for the plasticity. The
 observed temporal alignment between $I_p$ and 
 $I_d$ should hence suffer when such a 
-distraction is present. 
-%The situaton is illustrated 
-%in Fig.~\ref{fig_illustration_classification}.
+distraction is present. The situaton is illustrated 
+in Fig.~\ref{fig_illustration_classification}.
 
 In order to test the effects of distracting directions,
 we applied a transformation to the input sequences $x_{p,i}(t)$.
-For the transformation, two parameters are used,
+For the transformation two parameters are used,
 a scaling factor $s$ and the dimension $N_{\rm dist}$ 
 of the distracting subspace within the basal input 
 space. The $N_{\rm dist}$ randomly generated
@@ -537,7 +535,7 @@ vector $\mathbf{a}$, as defined by \eqref{eq_x_d_a},
 and to each others. Within this $N_{\rm dist}$-dimensional 
 subspace, the input sequences $x_{p,i}(t)$ are
 rescaled subsequently by the factor $s$. 
-%See Fig.~\ref{fig_illustration_classification}.
+See Fig.~\ref{fig_illustration_classification}.
 After the learning phase, a second set of input 
 sequences $x_{p,i}(t)$ and $x_d(t)$ is generated for 
 testing purposes, using the identical protocol, and
@@ -623,7 +621,7 @@ input is generated from,
 \mathbf{x}_p(t) = \mathbf{b} + 
 \mathbf{a}\big[c(t) + \sigma_a \zeta_a(t) \big] 
 + s \cdot \sum_{i=1}^{N_{\rm dist}} 
-\zeta_{dist,i}(t) \mathbf{v}_{{\rm dist},i} \; ,
+\zeta_{dist,i}(t) \mathbf{v}_{dist,i} \; ,
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 where $\mathbf{b}$ is a random vector drawn uniformly from
@@ -635,7 +633,7 @@ zero mean and unit variance.
 Hence, $\sigma_a$ simply denotes the standard deviation of each Gaussian
 cluster along the direction of the normal vector $\mathbf{a}$ and was
 set to $\sigma_a = 0.25$. 
-Finally, the set of $\mathbf{v}_{{\rm dist},i}$ forms a 
+Finally, the set of $\mathbf{v}_{dist,i}$ forms a 
 randomly generated orthogonal basis of $N_{\rm dist}$ 
 unit vectors which are---as in 
 Section~\ref{sect:alignment}---also orthogonal to 
@@ -644,7 +642,7 @@ the standard deviation along this subspace orthogonal
 to $\mathbf{a}$. As indicated by the time dependence, 
 the Gaussian and binary random variables are drawn 
 for each time step. The vectors $\mathbf{b}$, 
-$\mathbf{a}$, and $\mathbf{v}_{{\rm dist},i}$ are generated
+$\mathbf{a}$, and $\mathbf{v}_{dist,i}$ are generated
 once before the beginning of a simulation run.
 
 For the classification task, we use two output 
@@ -697,19 +695,19 @@ four combinations of neuron models and learning rules.
 
 For classical Hebbian plasticity, the differences between
 compartmental and point neuron are small. Interestingly,
-the compartment model performs measurably better in
+the compartment model performs sizable better in
 the case of the BCM rule (\ref{eq_bcm_rule}), in 
 particular when the overall accuracies for the 
 tested parameter range are compared, see 
 Fig.~\ref{fig:classification_accuracy}D.
-This indicates that the compartmental neuron
+This indicate that the compartmental neuron
 makes better use, during learing, of the
 three distinct activity plateaus at
 $0$, $\alpha$ and $1$, when the BCM
 rule is at work. Compare
 Fig.~\ref{fig_comp_model}. We point
 out in this respect that the sliding 
-threshold $\theta_M$ in (\ref{eq_bcm_rule}) 
+threshold $\Theta_M$ in (\ref{eq_bcm_rule}) 
 has been set to the half-way point between
 the two non-trivial activity levels,
 $\alpha$ and $1$. 
@@ -722,7 +720,7 @@ in the previous section), see
 Fig.~\ref{fig:classification_correlation} in 
 the appendix. Interestingly,
 the discrepancies are more pronounced when measuring
-the correlation as compared to the accuracy. Moreover,
+the alignment as compared to the accuracy. Moreover,
 it appears that above-chance accuracy is still present
 for parameter values where alignment is almost zero.
 We attribute this effect to the fact that the 
@@ -740,8 +738,8 @@ additional external input.
 %---------------------------------------%
 
 
-The workhorse of the brain, pyramidal neurons,
-possess distinct apical/basal (distant/proximal)
+The workhouse of the brain, pyramidal neurons,
+dispose of distinct apical/basal (distant/proximal)
 dendritic trees. It is hence likely that models
 with at least two compartments are necessary for
 describing the functionality of pyramidal neurons.
@@ -749,7 +747,7 @@ For a proposed two-compartment transfer function
 \citep{Shai_2015},
 we have introduced both unsupervised and supervised 
 learning schemes, showing that the two-compartment
-neuron is significantly more robust against 
+neuron is significantly more robustness against 
 distracting components in the proximal input 
 space than a corresponding (one-compartment) point
 neuron.
@@ -757,9 +755,9 @@ neuron.
 The apical and basal dentritic compartments of
 pyramidal neurons are located in different
 cortical layers \cite{park2019contribution},
-receiving top-down and feed-forward
-signals, respectively. The combined action of these two
-compartments is hence the prime candidate
+receiving respectively top-down and feed-forward
+signals. The combined action of these two
+compartments are is hence the prime candidate
 for the realization of backpropagation in 
 multi-layered networks
 \citep{Bengio2014,Lee2015,Guerguiev2017}. 
@@ -780,17 +778,17 @@ Learning correlations between distinct
 synaptic or compartmental inputs is
 as standard task for Hebbian-type learning,
 which implies that the here proposed framework
-is based not on supervised, but on biologically
+is based not on supervised, but on biological
 viable unsupevised learning schemes.
 
 The proximal input current $I_p$ is a linear 
 projection of the proximal input space. 
 Maximizing the correlation between $I_p$ and 
-$I_d$ (the distal current), can therefore be regarded 
-as a form of canonical correlation
+$I_d$ (the distal current), can be regarded 
+hence as a form of canonical correlation
 analysis (CCA) \citep{Haerdle2007}. The idea 
 of using CCA as a possible mode of 
-synaptic learning has previously been investigated
+synaptic learning has previously been investigated,
 by \citet{Haga2018}. Interestingly, according to 
 the authors, a BCM-learning term in the plasticity 
 dynamics accounts for a principal component analysis 
@@ -813,7 +811,7 @@ synapses, e.g.\ by facilitating spike initiation.
 Here we concentrated on one-dimensioal distal inputs.
 For the case of higher-dimensional distal input 
 patterns, as for structured multi-layered networks,
-it thus remains to be investigated how target signals 
+it remains hence to be investigated how target signals 
 are formed. However, as previous works have indicated, 
 random top-down weights are generically sufficient 
 for successful credit assignment and learning tasks

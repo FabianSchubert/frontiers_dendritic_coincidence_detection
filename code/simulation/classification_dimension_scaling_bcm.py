@@ -9,16 +9,17 @@ from datetime import datetime
 
 from multiprocessing import Pool
 
+N_processes = 6 #number of parallel processes
+
 N_sweep_distraction_scaling = 20
 N_sweep_distraction_dimension = 9
 N_samples = 1
 distract_scaling = np.linspace(0.,10.,N_sweep_distraction_scaling)
-distract_dimension = np.arange(1,N_sweep_distraction_dimension+1)
 
-
-
-N_p = 10
+N_p = 100
 N_out = 2
+
+distract_dimension = np.linspace(1.,N_p-1,N_sweep_distraction_dimension).astype("int")
 
 T = int(2e5)
 T_test = int(1e4)
@@ -118,14 +119,14 @@ def run_sim(arglist):
 
     for t in tqdm(range(1,T),disable=True,leave=False):
         
-        if(mode=="comp"):
-            w_p[t] = w_p[t-1] + mu_w * np.outer(y[t-1]*(y[t-1]-thetay),x_p[t-1] - x_p_av[t-1])
-        if(mode=="point"):
-            w_p[t] = (w_p[t-1]
+        #if(mode=="comp"):
+        #    w_p[t] = w_p[t-1] + mu_w * np.outer(y[t-1]*(y[t-1]-thetay),x_p[t-1] - x_p_av[t-1])
+        #if(mode=="point"):
+        w_p[t] = (w_p[t-1]
             + mu_w * (np.outer(y[t-1]*(y[t-1]-y_squ_av[t-1]),x_p[t-1] - x_p_av[t-1]) - eps_dec*w_p[t-1]))
             
-        if(mode=="comp"):
-            w_p[t] = (w_p[t].T / np.linalg.norm(w_p[t],axis=1)).T
+        #if(mode=="comp"):
+        #    w_p[t] = (w_p[t].T / np.linalg.norm(w_p[t],axis=1)).T
         
         b_p[t] = b_p[t-1] + mu_b * (I_p[t-1] - I_pt)
         b_d[t] = b_d[t-1] + mu_b * (I_d[t-1] - I_dt)
@@ -167,7 +168,7 @@ def run_sim(arglist):
     pred = np.argmax(I_p_test,axis=1)
     return (1.*(pred == lab_test)).mean(), I_p_test[:T_sample], lab_test[:T_sample]
 
-pool = Pool()
+pool = Pool(N_processes)
 output_list = list(tqdm(pool.imap_unordered(run_sim, params), total=len(params)))
 
 #with Pool() as p:
@@ -185,7 +186,7 @@ for mode in modes:
 
 
 
-np.savez(os.path.join(DATA_DIR,"classification_dimension_scaling_bcm/"
+np.savez(os.path.join(DATA_DIR,"classification_dimension_scaling_bcm_high_input_dim/"
         +"classification_dimension_scaling_bcm_"
         +datetime.now().strftime("%d-%m-%y-%H:%M:%S")
         +".npz"),

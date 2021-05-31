@@ -107,21 +107,25 @@ for i in range(2):
 
 for j in range(3):
     
-    fig.tight_layout(h_pad=0.1,w_pad=0.1,pad=0.)
+    fig.tight_layout(h_pad=0.1,w_pad=0.1,pad=0.1)
     
     for i in range(2):
-        title_idx_comp = ["A","B","C","D"][i*2]
-        title_idx_point = ["A","B","C","D"][i*2+1]
+        title_idx_comp = ["A","B","C","D","E","F"][i*3]
+        title_idx_point = ["A","B","C","D","E","F"][i*3+1]
+        title_idx_aggregate = ["A","B","C","D","E","F"][i*3+2]
         
         title_comp = ('\\makebox['+str(ax[i,0].get_window_extent().transformed(fig.dpi_scale_trans.inverted()).width)+'in]{ '
         +'{\\bf '+title_idx_comp+'} \\hfill '+"Compartment Model"+'}')
         title_point = ('\\makebox['+str(ax[i,1].get_window_extent().transformed(fig.dpi_scale_trans.inverted()).width)+'in]{ '
         +'{\\bf '+title_idx_point+'} \\hfill '+"Point Model"+'}')
+        title_aggregate = ('\\makebox['+str(ax[i,1].get_window_extent().transformed(fig.dpi_scale_trans.inverted()).width)+'in]{ '
+        +'{\\bf '+title_idx_aggregate+'} \\hfill '+"Aggregate Corr."+'}')
             
         ax[i,0].set_title(title_comp,usetex=True)
         ax[i,1].set_title(title_point,usetex=True)
+        ax[i,2].set_title(title_aggregate,usetex=True)
         
-    fig.tight_layout(h_pad=0.1,w_pad=0.1,pad=0.)
+    fig.tight_layout(h_pad=0.1,w_pad=0.1,pad=0.1)
 
 
 fig.savefig(os.path.join(PLOT_DIR,"classification_correlation_dimension_scaling_high_input_dim_composite.pdf"))

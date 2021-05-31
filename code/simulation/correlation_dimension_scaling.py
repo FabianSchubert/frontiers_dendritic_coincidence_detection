@@ -9,11 +9,17 @@ from datetime import datetime
 
 from multiprocessing import Pool
 
+N_processes = 6 #number of parallel processes
+
 N_sweep_distraction_scaling = 20
 N_sweep_distraction_dimension = 9
-N_samples = 2
-distract_scaling = np.linspace(1.,6.,N_sweep_distraction_scaling)
-distract_dimension = np.arange(1,N_sweep_distraction_dimension+1)
+N_samples = 1
+distract_scaling = np.linspace(0.,10.,N_sweep_distraction_scaling)
+
+N_p = 100
+N_out = 2
+
+distract_dimension = np.linspace(1.,N_p-1,N_sweep_distraction_dimension).astype("int")
 
 align_corrcoef = np.ndarray((N_sweep_distraction_scaling,
                     N_sweep_distraction_dimension,
@@ -101,9 +107,10 @@ def run_sim(arglist):
 
     for t in tqdm(range(1,T),disable=True,leave=False):
         
-        w_p[t] = w_p[t-1] + mu_w * (x_p[t-1] - x_p_av[t-1]) * (y[t-1]-y_av[t-1])
+        w_p[t] = (w_p[t-1]
+        + mu_w * (np.outer(y[t-1]-y_av[t-1], x_p[t-1] - x_p_av[t-1]) - eps_dec*w_p[t-1]))
                                 
-        w_p[t] /= np.linalg.norm(w_p[t])
+        #w_p[t] /= np.linalg.norm(w_p[t])
         
         b_p[t] = b_p[t-1] + mu_b * (I_p[t-1] - I_pt)
         b_d[t] = b_d[t-1] + mu_b * (I_d[t-1] - I_dt)
@@ -152,7 +159,7 @@ def run_sim(arglist):
     
 #un_sim([5,3.,"point"])
 
-pool = Pool()
+pool = Pool(N_processes)
 align_corrcoef_list = list(tqdm(pool.imap_unordered(run_sim, params), total=len(params)))
 
 #with Pool() as p:
@@ -166,7 +173,7 @@ for mode in modes:
                 align_corrcoef[s,n,i,modes.index(mode)] = align_corrcoef_list[k]
                 k += 1
 
-np.savez(os.path.join(DATA_DIR,"correlation_dimension_scaling/"
+np.savez(os.path.join(DATA_DIR,"correlation_dimension_scaling_high_input_dim/"
         +"correlation_dimension_scaling_"
         +datetime.now().strftime("%d-%m-%y-%H:%M:%S")
         +".npz"),

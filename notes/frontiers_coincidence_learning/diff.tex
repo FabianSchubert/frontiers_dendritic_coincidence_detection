@@ -1,4 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL frontiers_old.tex   Mon May 31 11:11:02 2021
+%DIF ADD frontiers.tex       Mon May 31 11:05:24 2021
 % This is just an example/guide for you to refer to when submitting manuscripts to Frontiers, it is not mandatory to use Frontiers .cls files nor frontiers.tex  %
 % This will only generate the Manuscript, the final article will be typeset by Frontiers after acceptance.   
 %                                              %
@@ -53,6 +56,46 @@
 	60438 Frankfurt am Main, Germany}
 
 \def\corrEmail{fschubert@itp.uni-frankfurt.de}
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \onecolumn
@@ -275,7 +318,7 @@ y(t) = \sigma\left(I_p(t) + I_d(t) -
 The apical input $I_d$ is generated
 `as is', meaning, it is not dynamically 
 calculated as a superposition of multiple 
-presynaptic inputs. For concreteness, we
+presynaptic inputs. \DIFdelbegin \DIFdel{To be concrete}\DIFdelend \DIFaddbegin \DIFadd{For concreteness}\DIFaddend , we
 used
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{equation}
@@ -303,7 +346,7 @@ $w_i(t)$ the synaptic efficacies and
 $n_p(t)$ and $b_p(t)$ the (time dependent)
 scaling and bias. Tyical values for the 
 parameters used throughout this study
-are presented in Table~\ref{tab_parameters}.
+are presented \DIFaddbegin \DIFadd{in }\DIFaddend Table~\ref{tab_parameters}.
 
 %---------------------------------------%
 \subsection{Homeostatic Parameter Regulation\label{sect_homeostasis}}
@@ -312,7 +355,7 @@ are presented in Table~\ref{tab_parameters}.
 The bias variables entering the definitions
 \eqref{eq_I_d} and \eqref{eq_I_p} of the distal
 proximal currrent, $I_d$ and $I_p$, 
-are assumed to adapt according to
+are assumed to adapt \DIFdelbegin \DIFdel{accodingly }\DIFdelend \DIFaddbegin \DIFadd{according }\DIFaddend to
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{align}
 \label{eq_b_p_dot}
@@ -327,7 +370,7 @@ timescale for the adaption process. Over
 time, both the distal and the proximal 
 currents, $I_d$ and $I_p$, average out.
 
-Adaptation rules for the bias entering a 
+\DIFdelbegin \DIFdel{Adaption }\DIFdelend \DIFaddbegin \DIFadd{Adaptation }\DIFaddend rules for the bias entering a 
 transfer function, such as
 \eqref{eq_b_d_dot} and \eqref{eq_b_p_dot},
 have the task to regulate overall activitiy
@@ -360,7 +403,7 @@ as long as the activtiy level and its variance
 fluctuate around preset target values 
 \citep{schubert2021local}. A list of 
 the parameter values used throughout this investigation 
-is also given in Table~\ref{tab_parameters}. Our choices of
+is \DIFaddbegin \DIFadd{also }\DIFaddend given in Table~\ref{tab_parameters}. Our choices of
 target means and variances are based on the assumption
 that neural input should be tuned towards a certain
 working regime of the neural transfer function. In
@@ -422,7 +465,7 @@ Since classical Hebbian learning does not keep
 weights bounded, we use an additional proportional decay
 term $\epsilon w_i$ which prevents runaway
 growth using $\epsilon = 0.1$.
-With $1/\mu_w=2\cdot10^4$, learning is 
+With $1/\mu_w=2\cdot10^4$\DIFaddbegin \DIFadd{, }\DIFaddend learning is 
 assumed to be be considerably slower, 
 as usual for statistical update rules.
 For comparative reasons, the point neuron 
@@ -442,7 +485,7 @@ w_i(t+1) = w_i(t) + \mu_w \big[ y\left(y - \theta_M\right) x_i -
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 where $\theta_M$ is a threshold defining a 
-transition from long-term potentiation (LTP) to long-term depression (LTD) and, 
+transition from \DIFdelbegin \DIFdel{LTP to LTD }\DIFdelend \DIFaddbegin \DIFadd{long-term potentiation (LTP) to long-term depression (LTD) }\DIFaddend and, 
 again, $\epsilon$ 
 is a decay term on the weights preventing unbounded 
 growth. In the variant introduced by \citet{Law1994}, 
@@ -523,12 +566,14 @@ is a distraction for the plasticity. The
 observed temporal alignment between $I_p$ and 
 $I_d$ should hence suffer when such a 
 distraction is present. 
-%The situaton is illustrated 
-%in Fig.~\ref{fig_illustration_classification}.
+\DIFdelbegin \DIFdel{The situaton is illustrated 
+in Fig.~\ref{fig_illustration_classification}.
+}\DIFdelend %DIF > The situaton is illustrated 
+%DIF > in Fig.~\ref{fig_illustration_classification}.
 
 In order to test the effects of distracting directions,
 we applied a transformation to the input sequences $x_{p,i}(t)$.
-For the transformation, two parameters are used,
+For the transformation\DIFaddbegin \DIFadd{, }\DIFaddend two parameters are used,
 a scaling factor $s$ and the dimension $N_{\rm dist}$ 
 of the distracting subspace within the basal input 
 space. The $N_{\rm dist}$ randomly generated
@@ -537,7 +582,8 @@ vector $\mathbf{a}$, as defined by \eqref{eq_x_d_a},
 and to each others. Within this $N_{\rm dist}$-dimensional 
 subspace, the input sequences $x_{p,i}(t)$ are
 rescaled subsequently by the factor $s$. 
-%See Fig.~\ref{fig_illustration_classification}.
+\DIFdelbegin \DIFdel{See Fig.~\ref{fig_illustration_classification}.
+}\DIFdelend %DIF > See Fig.~\ref{fig_illustration_classification}.
 After the learning phase, a second set of input 
 sequences $x_{p,i}(t)$ and $x_d(t)$ is generated for 
 testing purposes, using the identical protocol, and
@@ -623,7 +669,7 @@ input is generated from,
 \mathbf{x}_p(t) = \mathbf{b} + 
 \mathbf{a}\big[c(t) + \sigma_a \zeta_a(t) \big] 
 + s \cdot \sum_{i=1}^{N_{\rm dist}} 
-\zeta_{dist,i}(t) \mathbf{v}_{{\rm dist},i} \; ,
+\zeta_{dist,i}(t) \mathbf{v}\DIFdelbegin \DIFdel{_{dist,i} }\DIFdelend \DIFaddbegin \DIFadd{_{{\rm dist},i} }\DIFaddend \; ,
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 where $\mathbf{b}$ is a random vector drawn uniformly from
@@ -635,7 +681,7 @@ zero mean and unit variance.
 Hence, $\sigma_a$ simply denotes the standard deviation of each Gaussian
 cluster along the direction of the normal vector $\mathbf{a}$ and was
 set to $\sigma_a = 0.25$. 
-Finally, the set of $\mathbf{v}_{{\rm dist},i}$ forms a 
+Finally, the set of \DIFdelbegin \DIFdel{$\mathbf{v}_{dist,i}$ }\DIFdelend \DIFaddbegin \DIFadd{$\mathbf{v}_{{\rm dist},i}$ }\DIFaddend forms a 
 randomly generated orthogonal basis of $N_{\rm dist}$ 
 unit vectors which are---as in 
 Section~\ref{sect:alignment}---also orthogonal to 
@@ -644,7 +690,7 @@ the standard deviation along this subspace orthogonal
 to $\mathbf{a}$. As indicated by the time dependence, 
 the Gaussian and binary random variables are drawn 
 for each time step. The vectors $\mathbf{b}$, 
-$\mathbf{a}$, and $\mathbf{v}_{{\rm dist},i}$ are generated
+$\mathbf{a}$, and \DIFdelbegin \DIFdel{$\mathbf{v}_{dist,i}$ }\DIFdelend \DIFaddbegin \DIFadd{$\mathbf{v}_{{\rm dist},i}$ }\DIFaddend are generated
 once before the beginning of a simulation run.
 
 For the classification task, we use two output 
@@ -697,19 +743,19 @@ four combinations of neuron models and learning rules.
 
 For classical Hebbian plasticity, the differences between
 compartmental and point neuron are small. Interestingly,
-the compartment model performs measurably better in
+the compartment model performs \DIFdelbegin \DIFdel{sizable }\DIFdelend \DIFaddbegin \DIFadd{measurably }\DIFaddend better in
 the case of the BCM rule (\ref{eq_bcm_rule}), in 
 particular when the overall accuracies for the 
 tested parameter range are compared, see 
 Fig.~\ref{fig:classification_accuracy}D.
-This indicates that the compartmental neuron
+This \DIFdelbegin \DIFdel{indicate }\DIFdelend \DIFaddbegin \DIFadd{indicates }\DIFaddend that the compartmental neuron
 makes better use, during learing, of the
 three distinct activity plateaus at
 $0$, $\alpha$ and $1$, when the BCM
 rule is at work. Compare
 Fig.~\ref{fig_comp_model}. We point
 out in this respect that the sliding 
-threshold $\theta_M$ in (\ref{eq_bcm_rule}) 
+threshold \DIFdelbegin \DIFdel{$\Theta_M$ }\DIFdelend \DIFaddbegin \DIFadd{$\theta_M$ }\DIFaddend in (\ref{eq_bcm_rule}) 
 has been set to the half-way point between
 the two non-trivial activity levels,
 $\alpha$ and $1$. 
@@ -722,7 +768,7 @@ in the previous section), see
 Fig.~\ref{fig:classification_correlation} in 
 the appendix. Interestingly,
 the discrepancies are more pronounced when measuring
-the correlation as compared to the accuracy. Moreover,
+the \DIFdelbegin \DIFdel{alignment }\DIFdelend \DIFaddbegin \DIFadd{correlation }\DIFaddend as compared to the accuracy. Moreover,
 it appears that above-chance accuracy is still present
 for parameter values where alignment is almost zero.
 We attribute this effect to the fact that the 
@@ -740,8 +786,8 @@ additional external input.
 %---------------------------------------%
 
 
-The workhorse of the brain, pyramidal neurons,
-possess distinct apical/basal (distant/proximal)
+The \DIFdelbegin \DIFdel{workhouse }\DIFdelend \DIFaddbegin \DIFadd{workhorse }\DIFaddend of the brain, pyramidal neurons,
+\DIFdelbegin \DIFdel{dispose of }\DIFdelend \DIFaddbegin \DIFadd{possess }\DIFaddend distinct apical/basal (distant/proximal)
 dendritic trees. It is hence likely that models
 with at least two compartments are necessary for
 describing the functionality of pyramidal neurons.
@@ -749,7 +795,7 @@ For a proposed two-compartment transfer function
 \citep{Shai_2015},
 we have introduced both unsupervised and supervised 
 learning schemes, showing that the two-compartment
-neuron is significantly more robust against 
+neuron is significantly more \DIFdelbegin \DIFdel{robustness }\DIFdelend \DIFaddbegin \DIFadd{robust }\DIFaddend against 
 distracting components in the proximal input 
 space than a corresponding (one-compartment) point
 neuron.
@@ -757,9 +803,9 @@ neuron.
 The apical and basal dentritic compartments of
 pyramidal neurons are located in different
 cortical layers \cite{park2019contribution},
-receiving top-down and feed-forward
-signals, respectively. The combined action of these two
-compartments is hence the prime candidate
+receiving \DIFdelbegin \DIFdel{respectively }\DIFdelend top-down and feed-forward
+signals\DIFaddbegin \DIFadd{, respectively}\DIFaddend . The combined action of these two
+compartments \DIFdelbegin \DIFdel{are }\DIFdelend is hence the prime candidate
 for the realization of backpropagation in 
 multi-layered networks
 \citep{Bengio2014,Lee2015,Guerguiev2017}. 
@@ -780,18 +826,21 @@ Learning correlations between distinct
 synaptic or compartmental inputs is
 as standard task for Hebbian-type learning,
 which implies that the here proposed framework
-is based not on supervised, but on biologically
-viable unsupevised learning schemes.
+is based not on supervised, but on \DIFdelbegin \DIFdel{biological
+}\DIFdelend \DIFaddbegin \DIFadd{biologically
+}\DIFaddend viable unsupevised learning schemes.
 
 The proximal input current $I_p$ is a linear 
 projection of the proximal input space. 
 Maximizing the correlation between $I_p$ and 
-$I_d$ (the distal current), can therefore be regarded 
-as a form of canonical correlation
+$I_d$ (the distal current), can \DIFdelbegin \DIFdel{be regarded 
+hence }\DIFdelend \DIFaddbegin \DIFadd{therefore be regarded 
+}\DIFaddend as a form of canonical correlation
 analysis (CCA) \citep{Haerdle2007}. The idea 
 of using CCA as a possible mode of 
 synaptic learning has previously been investigated
-by \citet{Haga2018}. Interestingly, according to 
+\DIFdelbegin \DIFdel{,
+}\DIFdelend by \citet{Haga2018}. Interestingly, according to 
 the authors, a BCM-learning term in the plasticity 
 dynamics accounts for a principal component analysis 
 in the input space, while CCA requires an additional 
@@ -813,7 +862,7 @@ synapses, e.g.\ by facilitating spike initiation.
 Here we concentrated on one-dimensioal distal inputs.
 For the case of higher-dimensional distal input 
 patterns, as for structured multi-layered networks,
-it thus remains to be investigated how target signals 
+it \DIFdelbegin \DIFdel{remains hence }\DIFdelend \DIFaddbegin \DIFadd{thus remains }\DIFaddend to be investigated how target signals 
 are formed. However, as previous works have indicated, 
 random top-down weights are generically sufficient 
 for successful credit assignment and learning tasks
